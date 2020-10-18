@@ -10,7 +10,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
       <link rel="stylesheet" href="css/L.Control.Sidebar.css" />
-  <!-- JavaScript -->
+      <!-- JavaScript -->
       <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="  crossorigin=""></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -93,7 +93,7 @@
 
   var tests = null;
   // Get GeoJSON and put on it on the map when it loads
-  tests= L.geoJson.ajax("/assets/tester.geojson",{
+  tests= L.geoJson.ajax("assets/tester.geojson",{
 
     attribution: 'Made By <a href="https://github.com/loweas">loweas</a>'
     }).addTo(map);
