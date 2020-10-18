@@ -143,11 +143,13 @@
               rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
 
 
-
             });
 
-    map.once('focus', function() { map.scrollWheelZoom.enable(); });
+            map.once('focus', function() { map.scrollWheelZoom.enable(); });
 
+            sidebar.on('hidden', function () {
+    console.log('Sidebar is now hidden.');
+});
 
 
 </script>

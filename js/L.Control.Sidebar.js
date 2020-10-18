@@ -18,6 +18,7 @@ L.Control.Sidebar = L.Control.extend({
         content.parentNode.removeChild(content);
 
         var l = 'leaflet-';
+        var sidebar = this;
 
         // Create sidebar container
         var container = this._container =
@@ -36,6 +37,7 @@ L.Control.Sidebar = L.Control.extend({
     },
 
     addTo: function (map) {
+        var sidebar = this;
         var container = this._container;
         var content = this._contentContainer;
 
@@ -135,16 +137,17 @@ L.Control.Sidebar = L.Control.extend({
     },
 
     hide: function (e) {
-      // HIDE This so it can change through all points Ashley
-        // if (this.isVisible()) {
-        //     L.DomUtil.removeClass(this._container, 'visible');
-        //     if (this.options.autoPan) {
-        //         this._map.panBy([this.getOffset() / 2, 0], {
-        //             duration: 0.5
-        //         });
-        //     }
-        //     this.fire('hide');
-        // }
+      //HIDE This so it can change through all points Ashley
+        if (this.isVisible()) {
+            L.DomUtil.removeClass(this._container, 'visible');
+            if (this.options.autoPan) {
+                this._map.panBy([this.getOffset() / 2, 0], {
+                    duration: 0.5
+                });
+            }
+            this.fire('hide');
+
+        }
         if(e) {
             L.DomEvent.stopPropagation(e);
         }
@@ -152,7 +155,7 @@ L.Control.Sidebar = L.Control.extend({
 
     toggle: function () {
         if (this.isVisible()) {
-            this.hide();
+            // this.hide();
         } else {
             this.show();
         }
