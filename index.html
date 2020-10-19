@@ -40,7 +40,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#project">Project</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#mapdata">Map</a></li>
-          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#holder2">Data</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#dataanalysis">Data</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#about">About</a></li>
             </ul>
       </div>
@@ -77,7 +77,7 @@
         </section>
 
 
-        <section id="holder2" class="holder2-section">
+        <section id="dataanalysis" class="dataanalysis-section">
           <div class="center">
             <h1> Data Anyalsis</h1>
           </div>
@@ -119,15 +119,23 @@
 
       </section>
 
-      <section id="about" class="about-section">
+      <section id="about" class="about-section bg-black">
         <div class="center">
           <h1> About Us </h1>
         </div>
           <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+
       </section>
-
-
     </div>
+    <div class="copyright py-4 text-center text-white">
+      <div class="container">
+        <p> In partnership with <img src="img/osu.png" width="150">
+        </div>
+      </div>
+      <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
+      <div class="scroll-to-top d-lg-none position-fixed">
+        <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a>
+      </div>
 
 <script>
   var colors = chroma.scale('Set2').mode('lch').colors(9);
@@ -161,8 +169,13 @@
               var pro = document.getElementById('pro');
               pro.innerHTML =  e.layer.feature.properties.Q5_1;
 
+
               var name = document.getElementById('org');
-              name.innerHTML =  e.layer.feature.properties.Q1_1;
+              if (e.layer.feature.properties.Q1_1 =="NA"){
+                name.innerHTML =  e.layer.feature.properties.Q1_2_TEXT;
+                }
+              else (name.innerHTML =  e.layer.feature.properties.Q1_1)
+
               var des = document.getElementById('description');
               des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
 

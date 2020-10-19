@@ -46,7 +46,7 @@ padding-top: 10rem;
 margin-left: 1rem;
 margin-right: 1rem;
 }
-.holder2-section{
+.dataanalysis-section{
 padding-top: 5rem;
 margin-left: 1rem;
 margin-right: 1rem;
@@ -57,9 +57,14 @@ padding-top: 5rem;
 }
 
 .about-section{
-padding-top: 5rem;
-margin-left: 1rem;
-margin-right: 1rem;
+padding-top: 10rem;
+margin-left: 10rem;
+margin-right: 10rem;
+padding-bottom: 10rem;
+}
+.copyright {
+  background-color: #5c8e53;
+
 }
 
 .center {
@@ -342,6 +347,7 @@ html {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
+
 
 body {
   margin: 0;
