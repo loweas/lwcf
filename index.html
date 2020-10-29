@@ -179,7 +179,7 @@
 
 
   L.tileLayer('https://api.mapbox.com/styles/v1/loweas/ck6rbqwaj20fi1inwqn4c4w99/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibG93ZWFzIiwiYSI6ImNqczlhMzJqMjE1dDM0NG12dHBxam1lZjIifQ.Ox8goYypCr_cJCoDPgHTsQ').addTo(map);
-  var markers = L.markerClusterGroup({ disableClusteringAtZoom: 8 });
+  var markers = L.markerClusterGroup({ disableClusteringAtZoom: 9 });
   var tests = null;
   // Get GeoJSON and put on it on the map when it loads
   tests= L.geoJson.ajax("assets/tester.geojson",{
