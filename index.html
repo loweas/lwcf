@@ -254,7 +254,7 @@
             var color7 = chroma.scale(['#5c8e53', '#2a4c7e','#8E535C']).mode('lch').colors(7);
 
             Promise.all([
-              d3.csv('assets/cost.csv',d3.autoType),
+              d3.csv('assets/cost1.csv',d3.autoType),
               d3.csv('assets/lwcf/tester.csv',d3.autoType),
             ]).then(function(datasets) {
               var cost = ["num"];
@@ -299,22 +299,22 @@
 
                 });
 
-            console.log(cost1)
+            console.log(costrange)
 
 
               var costchart = c3.generate({
                 data: {
-              // json: [costrange],
-              // keys: {
-              //     value: cost1,
-              //     // x:'cost1',
-              // },
-              columns: ['cost1', cost],
-                // columns: [cost],
+              json: [costrange],
+              keys: {
+                  value: cost1,
+                  // x:'cost1',
+              },
+              // columns: ['cost1', cost],
+              //   // columns: [cost],
                   type: 'bar',
-                  // labels: {
-                  //   format:function (v, id, i, j) { var formatPercent = d3.format(",.2%"); return formatPercent(v); }
-                  // },
+                  labels: {
+                    format:function (v, id, i, j) { var formatPercent = d3.format(",.2%"); return formatPercent(v); }
+                  },
                   order: null
                   },
                   bar: {
@@ -393,7 +393,7 @@
                        }
                         },
                      color: {
-                       pattern: [color7[0], color7[2], color7[3]]
+                       pattern: [color7[0], color7[2], color7[3],color7[4],color7[5],color7[6]]
                      },
 
                 bindto: "#catchart"
