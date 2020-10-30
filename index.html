@@ -67,6 +67,10 @@
           </section>
 
         <section id="mapdata" class="mapdata-section">
+          <div class="center">
+            <h1> Map for Land & Water Conservation Survey</h1>
+          </div>
+          <br>
           <div id="sidebar">
             <h2 id='pro'> </h2>
             <h5 id='org' > </h5>
@@ -174,8 +178,9 @@
   var map = L.map("map",{
      minZoom: 4,
     maxZoom: 8,
+    scrollWheelZoom: false
 
-  }).setView([38,-98.], 4.5);
+  }).setView([38,-98.], 4);
 
 
   L.tileLayer('https://api.mapbox.com/styles/v1/loweas/ck6rbqwaj20fi1inwqn4c4w99/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibG93ZWFzIiwiYSI6ImNqczlhMzJqMjE1dDM0NG12dHBxam1lZjIifQ.Ox8goYypCr_cJCoDPgHTsQ').addTo(map);
@@ -241,8 +246,38 @@
 
             Promise.all([
               d3.csv('assets/cost.csv',d3.autoType),
+              d3.csv('assets/lwcf/tester.csv',d3.autoType),
             ]).then(function(datasets) {
               var cost = ["num"];
+              var df = datasets[1];
+              console.log(df)
+
+
+                // 7. Project Type
+                var protypeCount = d3.nest()
+                .key(function(d) { return d.Q31; })
+                .rollup(function(v) { return v.length; })
+                .entries(df);
+
+                var protypedata = {};
+                var sites = [];
+                protypeCount.forEach(function(e) {
+                sites.push(e.key);
+                protypedata[e.key] = e.value;
+                })
+
+                // 8. How would you best categorize the project?
+                var procatCount = d3.nest()
+                .key(function(d) { return d.Q10; })
+                .rollup(function(v) { return v.length; })
+                .entries(df);
+
+                var procatdata = {};
+                var sitescat = [];
+                procatCount.forEach(function(e) {
+                sitescat.push(e.key);
+                procatdata[e.key] = e.value;
+                })
 
 
               datasets[0].forEach(function(d) {
@@ -250,6 +285,8 @@
 
                 });
 
+
+console.log(cost)
 
               var costchart = c3.generate({
                 data: {
@@ -261,12 +298,12 @@
 
                   } ,
                   color: {
-                    pattern: [color7[0]]
+                    pattern: [color7[0], color7[2], color7[3], color7[4]]
                   },
                   axis: {
                     x: {
                       type: "category",
-                      categories: ['$1,000,001-$1,250,000', '$750,0001-$1,000,000']
+                      categories: [ "$1,750,000+","$1,500,000 - $1,750,000","$1,250,001 - $1,500,000",'$1,000,001-$1,250,000',"$750,0001 - $1,000,000","$500,001 - $750,000","$250,001 - $500,000","$0 - $250,000",'Unknown']
                     },
                       rotated: true
                   },
@@ -275,15 +312,17 @@
 
                 var chart = c3.generate({
                   data: {
-                    // iris data from R
-                    columns: [
-                      ['data1', 30],
-                      ['data2', 120],
-                    ],
-
-                    type : 'pie',
-
-                       },
+                      json: [ protypedata ],
+                      keys: {
+                          value: sites,
+                      },
+                      type:'pie'
+                  },
+                       axis: {
+                         x: {
+                           type: 'category'
+                         }
+                          },
                        color: {
                          pattern: [color7[0], color7[2], color7[3], color7[4], 'grey']
                        },
@@ -292,18 +331,21 @@
 
               var catchart = c3.generate({
                 data: {
-                  // iris data from R
-                  columns: [
-                    ['data1', 30],
-                    ['data2', 120],
-                  ],
-
+                  json: [ procatdata ],
+                  keys: {
+                      value: sitescat,
+                  },
                   type : 'pie',
-
                      },
+                     axis: {
+                       x: {
+                         type: 'category'
+                       }
+                        },
                      color: {
                        pattern: [color7[0], color7[2], color7[3]]
                      },
+
                 bindto: "#catchart"
               });
 
