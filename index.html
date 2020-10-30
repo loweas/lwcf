@@ -197,7 +197,7 @@
   var tests = null;
   // Get GeoJSON and put on it on the map when it loads
   tests= L.geoJson.ajax("assets/tester.geojson",{
-    
+
     })
 
     tests.on('data:loaded', function () {
@@ -439,6 +439,15 @@
                       });
 
 
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141661518-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-141661518-4');
 </script>
 </body>
 </html>
