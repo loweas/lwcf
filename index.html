@@ -92,7 +92,7 @@
 
         <section id="dataanalysis" class="dataanalysis-section">
           <div class="center">
-            <h1> Data Anyalsis</h1>
+            <h1> Data Analysis</h1>
             <a href="assets/cost.csv" download>
               Click Me for Survey Data
             </a>
@@ -237,7 +237,10 @@
               type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
 
               var rec = document.getElementById('rec');
-              rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+              if (e.layer.feature.properties.Q15_14_TEXT =="NA"){
+                rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+              }
+              else (rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" +e.layer.feature.properties.Q15_14_TEXT)
 
 
             });
@@ -250,7 +253,7 @@
             // Color for graphs
             var color4 = chroma.scale(['#5c8e53', '#2a4c7e']).mode('lch').colors(4);
             var color5 = chroma.scale(['#5c8e53', '#2a4c7e']).mode('lch').colors(5);
-            var color6 = chroma.scale(['#5c8e53', '#2a4c7e']).mode('lch').colors(6);
+            var color8 = chroma.scale(['#5c8e53', '#2a4c7e','#8E535C','#535353']).mode('lch').colors(9);
             var color7 = chroma.scale(['#5c8e53', '#2a4c7e','#8E535C']).mode('lch').colors(7);
 
             Promise.all([
@@ -289,75 +292,65 @@
                 procatdata[e.key] = e.value;
                 })
 
-                var costrange = {};
-                var cost1 = [];
-
-              datasets[0].forEach(function(d) {
-                cost.push(d.num);
-                cost1.push(d.Estimated);
-                costrange[d.Estimated] = d.num;
-
-                });
-
-            console.log(costrange)
+                // LWCF Program
+                var lwcfp = d3.nest()
+                .key(function(d) { return d.Q9; })
+                .rollup(function(v) { return v.length; })
+                .entries(df);
 
 
-              var costchart = c3.generate({
-                data: {
-              json: [costrange],
-              keys: {
-                  value: cost1,
-                  // x:'cost1',
+
+
+                //9. Estimated Cost Range
+            var chart = c3.generate({
+
+              data: {
+                columns: [
+                  ['Respondents', 0.225806452,0,0.032258065,0.032258065,0.161290323,0.096774194,0.096774194,0.161290323,0.193548387]
+                ],
+                type: 'bar',
+                color: function (color, d) {
+                           return color8[d.index];
+                       },
+                labels: {
+                  format:function (v, id, i, j) { var formatPercent = d3.format(",.2%"); return formatPercent(v); }
+                },
               },
-              // columns: ['cost1', cost],
-              //   // columns: [cost],
-                  type: 'bar',
-                  labels: {
-                    format:function (v, id, i, j) { var formatPercent = d3.format(",.2%"); return formatPercent(v); }
+              axis: {
+                x: {
+                  label: {
+                    text: 'Estimated Cost Range',
+                    position: 'outer-center',
                   },
-                  order: null
-                  },
-                  bar: {
-                       width: {
-                           ratio: 0.5 // this makes bar width 50% of length between ticks
-                       }
-                     },
-                  color: {
-                    pattern: [color7[0], color7[2], color7[3], color7[4]]
-                  },
-                  axis: {
-                    x: {
-                      label: {
-                        text: 'Estimated Cost Range',
-                        position: 'outer-center',
-                      },
-                      type: "category",
-                    categories: [ "$1,750,000+","$1,500,000 - $1,750,000","$1,250,001 - $1,500,000",'$1,000,001-$1,250,000',"$750,0001 - $1,000,000","$500,001 - $750,000","$250,001 - $500,000","$0 - $250,000",'Unknown'],
-                      tick: {
+                  type: 'category',
+                  categories:  [ "$1,750,000+","$1,500,000 - $1,750,000","$1,250,001 - $1,500,000",'$1,000,001-$1,250,000',"$750,0001 - $1,000,000","$500,001 - $750,000","$250,001 - $500,000","$0 - $250,000",'Unknown'],
+                  tick: {
                     centered: true
-                      }
-                    },
-                    y: {
-                      tick:{
-                        format: d3.format('.0%')
-                      },
-                      label: {
-                        text: '% of total Surveyed',
-                        position: 'outer-middle'
-                      },
-                      max: .3,
-                      padding: {
-                        top: 0,
-                        bottom: 0
-                      }
-                    },
-                      rotated: true
+                  }
+                },
+                y: {
+                  tick:{
+                    format: d3.format('.0%')
                   },
-                  legend: {
-                    show: false
-                  },
-                bindto: "#cost-chart"
-                });
+                  label: {
+                     text: '% of total Surveyed',
+                     position: 'outer-middle'
+                   },
+                   max: .3,
+                   min: 0,
+                   padding: {
+                     top: 0,
+                     bottom: 0
+                   }
+                 },
+                 rotated: true
+               },
+               legend: {
+                 show: false
+               },
+               bindto: "#cost-chart"
+             });
+
 
 
                 var chart = c3.generate({
@@ -399,30 +392,66 @@
                 bindto: "#catchart"
               });
 
-
+              // Would like to redo this one when I have more time
               var barchart = c3.generate({
                   data: {
                     columns: [
-                      ['data1', 30, 200, 100, 400, 150, 250],
-                      ['data2', 130, 100, 140, 200, 150, 50]
+                      ["American Battlefield Protection Program","Bureau of Land Management","National Park Service","Fish & Wildlife Service","U.S. Forest Service","State and Local Assistance Program","Forest Legacy Program","Other","Unknown"],
+                      ['Respondents',0,0.407407407,0.148148148,0.185185185,0.222222222,0.37037037,0.037037037,0.185185185,0.148148148]
                     ],
-                    type: 'bar'
+                    type: 'bar',
+                    color: function (color, d) {
+                               return color8[d.index];
+                           },
+                    labels: {
+                      format:function (v, id, i, j) { var formatPercent = d3.format(",.2%"); return formatPercent(v); }
+                    },
+
                   },
-                  color: {
-                    pattern: [color7[0],  color7[4]]
-                  },
-                  bar: {
-                    width: {
-                      ratio: 0.5 // this makes bar width 50% of length between ticks
-                    }
-                  },
+
+                  axis: {
+                    x: {
+                      label: {
+                        text: '',
+                        position: 'outer-center',
+                      },
+
+                      type: 'category',
+                      categories: ["American Battlefield Protection Program","Bureau of Land Management","National Park Service","Fish & Wildlife Service","U.S. Forest Service","State and Local Assistance Program","Forest Legacy Program","Other","Unknown"],
+                      tick: {
+                        centered: true,
+                      }
+                    },
+                    y: {
+                      tick:{
+                        format: d3.format('.0%')
+                      },
+                      label: {
+                         text: '% of total Surveyed',
+                         position: 'outer-middle'
+                       },
+                       max: .6,
+                       min: 0,
+                       padding: {
+                         top: 0,
+                         bottom: 0
+                       }
+                     },
+                     rotated: true
+                   },
+                   legend: {
+                     show: false
+                   },
                   bindto: "#barchart"
                   });
+
+
+
                   var recchart = c3.generate({
                       data: {
                         columns: [
-                          ['data1', 30, 200, 100, 400, 150, 250],
-                          ['data2', 130, 100, 140, 200, 150, 50]
+                          ["American Battlefield Protection Program","Bureau of Land Management","National Park Service","Fish & Wildlife Service","U.S. Forest Service","State and Local Assistance Program","Forest Legacy Program","Other","Unknown"],
+                          [0,0.407407407,0.148148148,0.185185185,0.222222222,0.37037037,0.037037037,0.185185185,0.148148148]
                         ],
                         type: 'bar'
                       },
