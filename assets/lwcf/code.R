@@ -1,5 +1,5 @@
 library(readr)
-LandWCF_Copy_October_17_2020_11_29 <- read_csv("~/Downloads/LandWCF_October 29, 2020_14.00.csv")
+LandWCF_Copy_October_17_2020_11_29 <- read_csv("~/Downloads/LandWCF_November 1, 2020_16.42.csv")
 
 
 library(readr)
@@ -9,9 +9,19 @@ tester<-merge(centroidsUS, LandWCF_Copy_October_17_2020_11_29, by.x=c('State','C
 ##Finding those thatt didn't fill in County
 t<-LandWCF_Copy_October_17_2020_11_29[- grep("", LandWCF_Copy_October_17_2020_11_29$County),]
 tester1<-merge(centroidstates, t, by.x='State', all=FALSE)
+tester1$StateAp<-NULL
+
 tester=rbind(tester,tester1)
 
 write.csv(tester, file="tester.csv")
+
+
+library(dplyr)
+
+
+tester$Q10<- gsub("\\(trail resurfacing, bridge construction, multi-use paths)|(parking areas, electrical, roads, ADA accessibility, shelters, water treatment, waste management)|(surface upgrades and rehabilitation, lighting, running tracks)|(including ADA accessibility)|(boathouses, beaches piers/pavilions, boat launches)", "", tester$Q10)
+
+
 
 ## Multi-question for project location land
 multi=tester
