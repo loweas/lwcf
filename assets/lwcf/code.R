@@ -13,35 +13,24 @@ tester1$StateAp<-NULL
 
 tester=rbind(tester,tester1)
 
-write.csv(tester, file="lwcfsurvey.csv")
 
 
 library(dplyr)
 
 
-tester$Q10<- gsub("\\(trail resurfacing, bridge construction, multi-use paths)|(parking areas, electrical, roads, ADA accessibility, shelters, water treatment, waste management)|(surface upgrades and rehabilitation, lighting, running tracks)|(including ADA accessibility)|(boathouses, beaches piers/pavilions, boat launches)", "", tester$Q10)
+tester$Q10<- gsub("(trail resurfacing, bridge construction, multi-use paths)|(parking areas, electrical, roads, ADA accessibility, shelters, water treatment, waste management)|(surface upgrades and rehabilitation, lighting, running tracks)|(including ADA accessibility)|(boathouses, beaches piers/pavilions, boat launches)", "", tester$Q10)
+tester$Q10<-gsub("\\(State Comprehensive Outdoor Recreation Plans \\(SCORPs) and Master Plans)", "", tester$Q10)
+tester$Q10<-gsub("\\(please describe on next page)", "", tester$Q10)
+tester$Q10<-gsub("\\ ()", "", tester$Q10)
+tester$Q10<-gsub("\\()", "", tester$Q10)
+tester$Q10<-gsub("\\:", "", tester$Q10)
+tester$Q9<-gsub("\\(please describe)", "", tester$Q9)
+tester$Q15<-gsub("\\(please describe)", "", tester$Q15)
+tester$Q9<-gsub("\\:", "", tester$Q9)
+tester$Q15<-gsub("\\:", "", tester$Q15)
+
+
+write.csv(tester, file="lwcfsurvey.csv")
 
 
 
-## Multi-question for project location land
-multi=tester
-multi$American_Battlefield_Protection_Program<-0
-multi$American_Battlefield_Protection_Program[grep("American Battlefield Protection Program", multi$Q9)]<-1
-multi$BLM<-0
-multi$BLM[grep("Bureau of Land Management", multi$Q9)]<-1
-multi$NPS<-0
-multi$NPS[grep("National Park Service", multi$Q9)]<-1
-multi$FWS<-0
-multi$FWS[grep("Fish & Wildlife Service", multi$Q9)]<-1
-multi$USFS<-0
-multi$USFS[grep("U.S. Forest Service", multi$Q9)]<-1
-multi$localstate<-0
-multi$localstate[grep("State and Local Assistance Program", multi$Q9)]<-1
-multi$Forest_Legacy_Program<-0
-multi$Forest_Legacy_Program[grep("Forest Legacy Program", multi$Q9)]<-1
-multi$Other<-0
-multi$Other[grep("Other", multi$Q9)]<-1
-multi$Unknow<-0
-multi$Unknow[grep("Unknown", multi$Q9)]<-1
-
-write.csv(multi, file="multi.csv")
