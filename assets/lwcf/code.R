@@ -13,7 +13,7 @@ tester1$StateAp<-NULL
 
 tester=rbind(tester,tester1)
 
-write.csv(tester, file="tester.csv")
+write.csv(tester, file="lwcfsurvey.csv")
 
 
 library(dplyr)

@@ -105,7 +105,7 @@
             <!-- <button onclick="update(df)">FY 2022</button>
             <button onclick="update(df1)">All Projects</button> -->
             <br>
-            <a href="assets/lwcf/tester.csv" download>
+            <a href="assets/lwcf/lwcfsurvey.csv" download>
               Click Me for Survey Data
             </a>
 
@@ -298,7 +298,7 @@
 
             //  Initial loadup
                    Promise.all([
-                        d3.csv('assets/lwcf/tester.csv',d3.autoType),
+                        d3.csv('assets/lwcf/lwcfsurvey.csv',d3.autoType),
                         ]).then(function(datasets) {
                           var df = datasets[0];
                           var df1 = df.filter(function(d) { return d.Q35 == "FY 22"; })
@@ -769,7 +769,7 @@
 
             function updateData1() {
             Promise.all([
-            d3.csv('assets/lwcf/tester.csv',d3.autoType),
+            d3.csv('assets/lwcf/lwcfsurvey.csv',d3.autoType),
             ]).then(function(datasets) {
               var df = datasets[0];
               var df1 = df.filter(function(d) { return d.Q35 == "FY 22"; })
@@ -1238,7 +1238,7 @@
                       // Click on FY2022 Data
                       function updateData(){
                         Promise.all([
-                        d3.csv('assets/lwcf/tester.csv',d3.autoType),
+                        d3.csv('assets/lwcf/lwcfsurvey.csv',d3.autoType),
                         ]).then(function(datasets) {
                           var df = datasets[0];
                           var df = df.filter(function(d) { return d.Q35 == "FY 22"; })

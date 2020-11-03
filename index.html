@@ -10,7 +10,6 @@
       <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
-
       <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Cinzel:wght@500&family=Commissioner:wght@300&family=Josefin+Sans:wght@500&family=Raleway:wght@300&display=swap" rel="stylesheet">
 
       <!-- JavaScript -->
@@ -18,21 +17,23 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
       <script src="js/L.Control.Sidebar.js"></script>
       <script src="js/d3.js"></script>
       <script src="js/c3.min.js"></script>
       <script src="js/chroma.min.js"></script>
+      <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light" id="mainNav">
-  <div class="container">
     <p><a href="https://recreationroundtable.org/">
     <img src="img/ORR.png"  width="15%" ></a>
   <a href="https://orei.oregonstate.edu/">
     <img src="img/osu.png"  width="15%" ></a>
     <a href="https://www.lwcfcoalition.com/">
       <img src="img/LWCF.png"  width="6%" ></a></p>
-
+  <div class="container">
       <a class="navbar-brand" href="index.html"></a>
       <button class="navbar-toggler navbar-toggler-Left" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
@@ -80,6 +81,7 @@
           <div id="sidebar">
             <h2 id='pro'> </h2>
             <h5 id='org' > </h5>
+            <h6 id='fy22' > </h6>
               <p id='description'> </p>
               <p id='cos'> </p>
               <p id='type'> </p>
@@ -105,93 +107,116 @@
                </form>
 
             <br>
-            <a href="assets/lwcf/tester.csv" download>
+            <a href="assets/lwcf/lwcfsurvey.csv" download>
               Click Me for Survey Data
             </a>
-
           </div>
 
+          <br>
+          <hr size="6" width="50%" align="center" color="Black">
+          <br>
           <div class="row">
-            <div class="col">
+            <div class="col-md">
               <div id="barchart"></div>
             </div>
-            <div class="col">
+            <div class="col-lg">
               <div class="center">
               <h3>Management System</h3>
             </div>
             <p>Most commonly mentioned management system ......<p>
               <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+            </div>
+            <br>
+            <hr size="6" width="50%" align="center" color="Black">
+            <br>
 
-            </div>
-            </div>
             <div class="row">
-              <div class="col">
+              <div class="col-lg">
                 <div class="center">
                 <h3>Estimated Cost Range </h3>
                   </div>
                   <p>This can be interpreted as precent of respondents<p>
                 <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
               </div>
-              <div class="col">
+              <div class="col-md">
                 <div id="cost-chart"></div>
               </div>
               </div>
+              <br>
+              <hr size="6" width="50%" align="center" color="Black">
+              <br>
+
               <div class="row">
-                <div class="col">
+                <div class="col-md">
                   <div id="chart"></div>
                 </div>
-                <div class="col">
+                <div class="col-lg">
                   <div class="center">
                   <h3>Project Type </h3>
                     </div>
                       <p>This can be interpreted as precent of respondents<p>
                   <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                 </div>
-
                 </div>
+                <br>
+                <hr size="6" width="50%" align="center" color="Black">
+                <br>
+
                 <div class="row">
-                  <div class="col">
+                  <div class="col-lg">
                     <div class="center">
                     <h3>Categorization of the project</h3>
                       </div>
                         <p>This can be interpreted as precent of respondents<p>
                     <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                   </div>
-                  <div class="col">
+                  <div class="col-md">
                     <div id="catchart"></div>
                   </div>
                   </div>
+                  <br>
+                  <hr size="6" width="50%" align="center" color="Black">
+                  <br>
 
                   <div class="row">
-                    <div class="col">
+                    <div class="col-md">
                       <div id="recchart"></div>
                     </div>
-                    <div class="col">
+                    <div class="col-lg">
                       <div class="center">
                       <h3>Recreation Types Supported</h3>
                         </div>
                           <p>Most frequently types of recreation mentioned the project supports....</p>
                       <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    </div>
+                    <br>
+                    <hr size="6" width="50%" align="center" color="Black">
+                    <br>
 
-                    </div>
-                    </div>
+
                     <div class="row">
-                      <div class="col">
+                      <div class="col-lg">
                         <div class="center">
                         <h3>Application Standing</h3>
                           </div>
                           <p>The proportion of applications whom have submitted or are new concepts</p>
                         <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                       </div>
-                      <div class="col">
+                      <div class="col-md">
                         <div id="conceptchart"></div>
                       </div>
                       </div>
+                      <br>
+                      <hr size="6" width="50%" align="center" color="Black">
+                      <br>
+
                     <div class="row">
-                      <div class="col">
+                      <div class="col-md">
                         <div id="demochart"></div>
                       </div>
-                      <div class="col">
+                      <div class="col-lg">
                         <div class="center">
                         <h3>Demographics </h3>
                           </div>
@@ -258,6 +283,14 @@
               var pro = document.getElementById('pro');
               pro.innerHTML =  e.layer.feature.properties.Q5_1;
 
+              var fy22 = document.getElementById('fy22');
+              if (e.layer.feature.properties.Q35 == "FY 22"){
+                fy22.innerHTML = "Financal Year 2022"
+              }
+              else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond"){
+                fy22.innerHTML = "Financal Year 2023 & Beyond"
+              }
+              else  (fy22.innerHTML = "")
 
               var name = document.getElementById('org');
               if (e.layer.feature.properties.Q1_1 =="NA"){
@@ -298,7 +331,7 @@
 
             //  Initial loadup
                    Promise.all([
-                        d3.csv('assets/lwcf/tester.csv',d3.autoType),
+                        d3.csv('assets/lwcf/lwcfsurvey.csv',d3.autoType),
                       ]).then(function(datasets){
                           var df1 = datasets[0];
                           var df2 = datasets[0].filter(function(d) { return d.Q35 == "FY 22"; })
