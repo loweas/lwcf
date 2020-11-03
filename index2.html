@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Land Water and Conservation Fund</title>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="css/bootstrap.css">
+      <link rel="stylesheet" href="css/L.Control.Sidebar.css" />
+      <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+
+      <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Cinzel:wght@500&family=Commissioner:wght@300&family=Josefin+Sans:wght@500&family=Raleway:wght@300&display=swap" rel="stylesheet">
+
+      <!-- JavaScript -->
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="  crossorigin=""></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+      <script src="js/L.Control.Sidebar.js"></script>
+      <script src="js/d3.js"></script>
+      <script src="js/c3.min.js"></script>
+      <script src="js/chroma.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light" id="mainNav">
+  <div class="container">
+    <p><a href="https://recreationroundtable.org/">
+    <img src="img/ORR.png"  width="15%" ></a>
+  <a href="https://orei.oregonstate.edu/">
+    <img src="img/osu.png"  width="15%" ></a>
+    <a href="https://www.lwcfcoalition.com/">
+      <img src="img/LWCF.png"  width="6%" ></a></p>
+
+      <a class="navbar-brand" href="index.html"></a>
+      <button class="navbar-toggler navbar-toggler-Left" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#project">Project</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#mapdata">Map</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#dataanalysis">Data</a></li>
+          <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#about">About</a></li>
+            </ul>
+      </div>
+    </div>
+  </nav>
+
+    <div class="container">
+      <section id="project" class="project-section">
+        <div class="center">
+          <h1> The Land & Water Conservation Fund Coalition</h1>
+          <h4> Project Description </h4>
+          <br>
+          </div>
+          <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </br>
+
+        <div class="center">
+            <h4> Top 10 Projects Information </h4>
+                </div>
+            <div class="row">
+              <div class="col">
+            <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+          </div>
+          <div class="col">
+            <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+            </div>
+          </section>
+
+        <section id="mapdata" class="mapdata-section">
+          <div class="center">
+            <h1> Map for Land & Water Conservation Survey</h1>
+          </div>
+          <br>
+          <div id="sidebar">
+            <h2 id='pro'> </h2>
+            <h5 id='org' > </h5>
+              <p id='description'> </p>
+              <p id='cos'> </p>
+              <p id='type'> </p>
+              <p id='rec'> </p>
+          </div>
+          <div id="map"></div>
+        </section>
+
+
+        <section id="dataanalysis" class="dataanalysis-section">
+          <div class="center">
+            <h1> Data Analysis</h1>
+            <div id="option">
+            <input name="updateButton"
+           type="button"
+           value="FY 2022"
+           onclick="updateData()" />
+           <input name="updateButton"
+           type="button"
+           value="All Data"
+           onclick="updateData1()" />
+         </div>
+            <!-- <button onclick="update(df)">FY 2022</button>
+            <button onclick="update(df1)">All Projects</button> -->
+            <br>
+            <a href="assets/lwcf/tester.csv" download>
+              Click Me for Survey Data
+            </a>
+
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div id="barchart"></div>
+            </div>
+            <div class="col">
+              <div class="center">
+              <h3>Management System</h3>
+            </div>
+            <p>Most commonly mentioned management system ......<p>
+              <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+
+            </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="center">
+                <h3>Estimated Cost Range </h3>
+                  </div>
+                  <p>This can be interpreted as precent of respondents<p>
+                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+              </div>
+              <div class="col">
+                <div id="cost-chart"></div>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div id="chart"></div>
+                </div>
+                <div class="col">
+                  <div class="center">
+                  <h3>Project Type </h3>
+                    </div>
+                      <p>This can be interpreted as precent of respondents<p>
+                  <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                </div>
+
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="center">
+                    <h3>Categorization of the project</h3>
+                      </div>
+                        <p>This can be interpreted as precent of respondents<p>
+                    <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                  </div>
+                  <div class="col">
+                    <div id="catchart"></div>
+                  </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <div id="recchart"></div>
+                    </div>
+                    <div class="col">
+                      <div class="center">
+                      <h3>Recreation Types Supported</h3>
+                        </div>
+                          <p>Most frequently types of recreation mentioned the project supports....</p>
+                      <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+
+                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="center">
+                        <h3>Application Standing</h3>
+                          </div>
+                          <p>The proportion of applications whom have submitted or are new concepts</p>
+                        <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                      </div>
+                      <div class="col">
+                        <div id="conceptchart"></div>
+                      </div>
+                      </div>
+                    <div class="row">
+                      <div class="col">
+                        <div id="demochart"></div>
+                      </div>
+                      <div class="col">
+                        <div class="center">
+                        <h3>Demographics </h3>
+                          </div>
+                        <p class="lorem">Most commonly mentioned communities the project would serve..... <br><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                      </div>
+                      </div>
+      </section>
+
+      <section id="about" class="about-section bg-black">
+        <div class="center">
+          <h1> About Us </h1>
+        </div>
+          <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+
+      </section>
+    </div>
+    <div class="copyright py-4 text-center text-white">
+      <div class="container">
+        <p> In partnership with <img src="img/osu.png" width="150">
+        </div>
+      </div>
+      <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
+      <div class="scroll-to-top d-lg-none position-fixed">
+        <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a>
+      </div>
+
+<script>
+  var colors = chroma.scale('Set2').mode('lch').colors(9);
+  // Map
+  var map = L.map("map",{
+     minZoom: 4,
+    maxZoom: 8,
+    scrollWheelZoom: false
+
+  }).setView([38,-98.], 4);
+
+
+  L.tileLayer('https://api.mapbox.com/styles/v1/loweas/ck6rbqwaj20fi1inwqn4c4w99/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibG93ZWFzIiwiYSI6ImNqczlhMzJqMjE1dDM0NG12dHBxam1lZjIifQ.Ox8goYypCr_cJCoDPgHTsQ',{
+      attribution: 'Made By <a href="https://github.com/loweas">loweas</a>',
+  }).addTo(map);
+  var markers = L.markerClusterGroup({ disableClusteringAtZoom: 9 });
+  var tests = null;
+  // Get GeoJSON and put on it on the map when it loads
+  tests= L.geoJson.ajax("assets/tester.geojson",{
+
+    })
+
+    tests.on('data:loaded', function () {
+      markers.addLayer(tests);
+      map.addLayer(markers);
+
+    });
+
+    var sidebar = L.control.sidebar('sidebar', {
+      closeButton: true,
+      position: 'right'
+    });
+
+    map.addControl(sidebar);
+
+    tests.on('click', function (e) {
+
+              sidebar.toggle();
+              var pro = document.getElementById('pro');
+              pro.innerHTML =  e.layer.feature.properties.Q5_1;
+
+
+              var name = document.getElementById('org');
+              if (e.layer.feature.properties.Q1_1 =="NA"){
+                name.innerHTML =  e.layer.feature.properties.Q1_2_TEXT;
+                }
+              else (name.innerHTML =  e.layer.feature.properties.Q1_1)
+
+              var des = document.getElementById('description');
+              des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+
+              var cos = document.getElementById('cos');
+              cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+
+              var type = document.getElementById('type');
+              type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+
+              var rec = document.getElementById('rec');
+              if (e.layer.feature.properties.Q15_14_TEXT =="NA"){
+                rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+              }
+              else (rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" +e.layer.feature.properties.Q15_14_TEXT)
+
+            });
+
+            map.once('focus', function() { map.scrollWheelZoom.enable(); });
+
+
+            // Data Analysis Part of the Website using D3 and C3
+
+            // Color for graphs
+            var color4 = chroma.scale(['#5c8e53', '#2a4c7e']).mode('lch').colors(4);
+            var color5 = chroma.scale(['#5c8e53', '#2a4c7e']).mode('lch').colors(5);
+            var color8 = chroma.scale(['#5c8e53', '#2a4c7e','#8E535C','#535353']).mode('lch').colors(9);
+            var color7 = chroma.scale(['#5c8e53', '#2a4c7e','#8E535C']).mode('lch').colors(7);
+            var color14 = chroma.scale(['#5c8e53', '#2a4c7e','#8E535C','#535353']).mode('lch').colors(14);
+            var color20 = chroma.scale(['#5c8e53', '#2a4c7e','#8E535C','#535353']).mode('lch').colors(20);
+
+
+            //  Initial loadup
+                   Promise.all([
+                        d3.csv('assets/lwcf/tester.csv',d3.autoType),
+                        ]).then(function(datasets) {
+                          var df = datasets[0];
+                          var df1 = df.filter(function(d) { return d.Q35 == "FY 22"; })
+
+
+                            // Estimated Cost Range
+                          var estcost = d3.nest()
+                          .key(function(d) { return d.Q13; })
+                          .rollup(function(v) { return v.length; })
+                          .entries(df);
+
+                          estcost.forEach(function(e){
+                            if ( e.key == "$1,750,000+" ){
+                              e["ranges"] = 8
+                            }
+                            if ( e.key == "$1,500,000 - $1,750,000" ){
+                              e["ranges"] = 7
+                            }
+                            if ( e.key == "$1,250,001 - $1,500,000" ){
+                              e["ranges"] = 6
+                            }
+                            if ( e.key == "$1,000,001 - $1,250,000" ){
+                              e["ranges"] = 5
+                            }
+                            if ( e.key == "$750,0001 - $1,000,000" ){
+                              e["ranges"] = 4
+                            }
+                            if ( e.key == "$500,001 - $750,000" ){
+                              e["ranges"] = 3
+                            }
+                            if ( e.key == "$250,001 - $500,000" ){
+                              e["ranges"] = 2
+                            }
+                            if ( e.key == "$0 - $250,000" ){
+                              e["ranges"] = 1
+                            }
+                            if ( e.key == "Unknown" ){
+                              e["ranges"] = 0
+                            }
+                          });
+                          estcost.sort(function(a, b){ return d3.descending(a.ranges, b.ranges); });
+                          var i;
+                          for(i = 0; i < estcost.length; i++){
+                            estcost[i].Respondents = estcost[i]['value']/df.length;
+                          }
+
+                            // 7. Project Type
+                            var protypeCount = d3.nest()
+                            .key(function(d) { return d.Q31; })
+                            .rollup(function(v) { return v.length; })
+                            .entries(df);
+
+                            var protypedata = {};
+                            var sites = [];
+                            protypeCount.forEach(function(e) {
+                            sites.push(e.key);
+                            protypedata[e.key] = e.value;
+                            })
+
+                            // 8. How would you best categorize the project?
+                            var procatCount = d3.nest()
+                            .key(function(d) { return d.Q10; })
+                            .rollup(function(v) { return v.length; })
+                            .entries(df);
+
+                            var procatdata = {};
+                            var sitescat = [];
+                            procatCount.forEach(function(e) {
+                            sitescat.push(e.key);
+                            procatdata[e.key] = e.value;
+                            })
+                            // New concept ideas
+                            var concept = d3.nest()
+                            .key(function(d) { return d.Q22; })
+                            .rollup(function(v) { return v.length; })
+                            .entries(df);
+
+                            var conceptdata = {};
+                            var conceptsites = [];
+                            concept.forEach(function(e) {
+                            conceptsites.push(e.key);
+                            conceptdata[e.key] = e.value;
+                            })
+
+
+                            //9. Multi question land
+                            var q9 = df.map(function(d) {
+                              return {
+                                q9: d.Q9,
+                              }
+                            });
+
+                            result = [].concat(
+                                ...q9.map(
+                                    ({ q9 }) => q9.split(',').map(
+                                       land => ({ land })
+                                   )
+                               )
+                           );
+
+
+                           var lwcfp = d3.nest()
+                           .key(function(d) { return d.land; })
+                           .rollup(function(v) { return v.length; })
+                           .entries(result)
+                           .sort(function(a, b){ return d3.descending(a.value, b.value); });
+                           var lands1 = [];
+                           var i;
+                           for(i = 0; i < lwcfp.length; i++){
+                             lwcfp[i].Respondents = lwcfp[i]['value']/df.length;
+
+                           }
+                           lwcfp.forEach(function(e) {
+                              lands1.push(e.key);
+                           })
+
+
+                           // Estimated cost
+                           var q20 = df.map(function(d) {
+                             return {
+                               q20: d.Q20,
+                             }
+                           });
+                           results = [].concat(
+                               ...q20.map(
+                                   ({ q20 }) => q20.split(',').map(
+                                      rectype => ({ rectype })
+                                  )
+                              )
+                          );
+                          var demo = d3.nest()
+                          .key(function(d) { return d.rectype; })
+                          .rollup(function(v) { return v.length; })
+                          .entries(results)
+                          .sort(function(a, b){ return d3.descending(a.value, b.value); });
+                          var demo1 = [];
+                          var i;
+                          for(i = 0; i < demo.length; i++){
+                            demo[i].Respondents = demo[i]['value']/df.length;
+                          }
+                          demo.forEach(function(e) {
+                             demo1.push(e.key);
+                          })
+
+                          // Estimated Rec type
+
+                          var q15 = df.map(function(d) {
+
+                            return {
+                              q15: d.Q15,
+                            }
+
+                          });
+                          console.log()
+
+                          resultrec = [].concat(
+                              ...q15.map(
+                                  ({ q15 }) => q15.split(',').map(
+                                     rectype => ({ rectype })
+                                 )
+                             )
+                         );
+                         var rec = d3.nest()
+                         .key(function(d) { return d.rectype; })
+                         .rollup(function(v) { return v.length; })
+                         .entries(resultrec)
+                         .sort(function(a, b){ return d3.descending(a.value, b.value); });
+                         var rec1 = [];
+                         var i;
+                         for(i = 0; i < rec.length; i++){
+                           rec[i].Respondents = rec[i]['value']/df.length;
+                         }
+                         rec.forEach(function(e) {
+                            rec1.push(e.key);
+                         })
+                            console.log(rec)
+
+
+
+                                        var chart = c3.generate({
+
+                                          data: {
+                                            json: estcost,
+                                            keys: {
+                                              x: 'key',
+                                                value: ['Respondents'],
+                                            },
+                                            type: 'bar',
+                                            color: function (color, d) {
+                                                       return color8[d.index];
+                                                   },
+                                            labels: {
+                                              format:function (v, id, i, j) { var formatPercent = d3.format(",.2%"); return formatPercent(v); }
+                                            },
+                                          },
+                                          axis: {
+                                            x: {
+                                              label: {
+                                                text: 'Estimated Cost Range',
+                                                position: 'outer-center',
+                                              },
+                                              type: 'category',
+                                              // categories:  [ "$1,750,000+","$1,500,000 - $1,750,000","$1,250,001 - $1,500,000",'$1,000,001-$1,250,000',"$750,0001 - $1,000,000","$500,001 - $750,000","$250,001 - $500,000","$0 - $250,000",'Unknown'],
+                                              tick: {
+                                                centered: true
+                                              }
+                                            },
+                                            y: {
+                                              tick:{
+                                                format: d3.format('.0%')
+                                              },
+                                              label: {
+                                                 text: '% of total Respondents',
+                                                 position: 'outer-middle'
+                                               },
+                                               max: .3,
+                                               min: 0,
+                                               padding: {
+                                                 top: 0,
+                                                 bottom: 0
+                                               }
+                                             },
+                                             rotated: true
+                                           },
+                                           legend: {
+                                             show: false
+                                           },
+                                           bindto: "#cost-chart"
+                                         });
+
+
+
+                                            var chart = c3.generate({
+                                              data: {
+                                                  json: [ protypedata ],
+                                                  keys: {
+                                                      value: sites,
+                                                  },
+                                                  type:'pie'
+                                              },
+                                                   axis: {
+                                                     x: {
+                                                       type: 'category'
+                                                     }
+                                                      },
+                                                   color: {
+                                                     pattern: [color7[0], color7[2], color7[3], color7[4], 'grey']
+                                                   },
+                                                   bindto: "#chart"
+                                                 });
+
+                                                 var conceptchart = c3.generate({
+                                                   data: {
+                                                       json: [ conceptdata ],
+                                                       keys: {
+                                                           value: conceptsites,
+                                                       },
+                                                       type:'pie'
+                                                   },
+                                                        axis: {
+                                                          x: {
+                                                            type: 'category'
+                                                          }
+                                                           },
+                                                        color: {
+                                                          pattern: [color7[0], color7[2], color7[3], color7[4], 'grey']
+                                                        },
+                                                        bindto: "#conceptchart"
+                                                      });
+
+
+                                          var catchart = c3.generate({
+                                            data: {
+                                              json: [ procatdata ],
+                                              keys: {
+                                                  value: sitescat,
+                                              },
+                                              type : 'pie',
+                                                 },
+                                                 axis: {
+                                                   x: {
+                                                     type: 'category'
+                                                   }
+                                                    },
+                                                 color: {
+                                                   pattern: [color7[0], color7[2], color7[3],color7[4],color7[5],color7[6]]
+                                                 },
+
+                                            bindto: "#catchart"
+                                          });
+
+
+                                          var barchart = c3.generate({
+                                            data: {
+                                                json: lwcfp,
+                                                keys: {
+                                                  x: 'key',
+                                                    value: ['Respondents'],
+                                                },
+                                                type: 'bar',
+                                                color: function (color, d) {
+                                                           return color8[d.index];
+                                                       },
+                                                       labels: {
+                                                         format:function (v, id, i, j) { var formatPercent = d3.format(",.0%"); return formatPercent(v); }
+                                                       },
+                                            },
+
+                                              axis: {
+                                                x: {
+                                                  label: {
+                                                    text: '',
+                                                    position: 'outer-center',
+                                                  },
+                                                  type: 'category',
+                                                  categories: lands1,
+                                                  tick: {
+                                                    centered: true,
+                                                  }
+                                                },
+                                                y: {
+                                                  tick:{
+                                                    format: d3.format('.0%')
+                                                  },
+                                                  max: 1,
+                                                  min: 0,
+                                                  padding: {
+                                                    top: 0,
+                                                    bottom: 0
+                                                  },
+                                                  label: {
+                                                     text: 'Total Resondents (n=' +df.length+")",
+                                                     position: 'outer-middle',
+
+                                                   },
+
+                                                 },
+                                                 rotated: true
+                                               },
+                                               legend: {
+                                                 show: false
+                                               },
+
+                                              bindto: "#barchart"
+                                              });
+
+
+                                              var recchart = c3.generate({
+                                                data: {
+                                                    json: rec,
+                                                    keys: {
+                                                      x: 'key',
+                                                        value: ['Respondents'],
+                                                    },
+                                                    type: 'bar',
+                                                    color: function (color, d) {
+                                                               return color20[d.index];
+                                                           },
+                                                           labels: {
+                                                             format:function (v, id, i, j) { var formatPercent = d3.format(",.0%"); return formatPercent(v); }
+                                                           },
+                                                },
+
+                                                  axis: {
+                                                    x: {
+                                                      label: {
+                                                        text: '',
+                                                        position: 'outer-center',
+                                                      },
+                                                      type: 'category',
+                                                      categories: lands1,
+                                                      tick: {
+                                                        centered: true,
+                                                      }
+                                                    },
+                                                    y: {
+                                                      tick:{
+                                                        format: d3.format('.0%')
+                                                      },
+                                                      max: 1,
+                                                      min: 0,
+                                                      padding: {
+                                                        top: 0,
+                                                        bottom: 0
+                                                      },
+                                                      label: {
+                                                         text: 'Total Resondents (n=' +df.length+")",
+                                                         position: 'outer-middle',
+
+                                                       },
+
+                                                     },
+                                                     rotated: true
+                                                   },
+                                                   legend: {
+                                                     show: false
+                                                   },
+
+                                                  bindto: "#recchart"
+                                                  });
+
+                                              var recchart = c3.generate({
+                                                data: {
+                                                    json: demo,
+                                                    keys: {
+                                                      x: 'key',
+                                                        value: ['Respondents'],
+                                                    },
+                                                    type: 'bar',
+                                                    color: function (color, d) {
+                                                               return color14[d.index];
+                                                           },
+                                                           labels: {
+                                                             format:function (v, id, i, j) { var formatPercent = d3.format(",.0%"); return formatPercent(v); }
+                                                           },
+                                                },
+
+                                                  axis: {
+                                                    x: {
+                                                      label: {
+                                                        text: 'Demographic',
+                                                        position: 'outer-center',
+                                                      },
+                                                      padding: {
+                                                        left: 0,
+                                                        right: 0,
+                                                      },
+                                                      type: 'category',
+                                                      categories: lands1,
+                                                      tick: {
+                                                        centered: true,
+                                                      }
+                                                    },
+                                                    y: {
+                                                      tick:{
+                                                        format: d3.format('.0%'),
+
+                                                      },
+                                                      max: 1,
+                                                      min: 0,
+                                                      padding: {
+                                                        top: 20,
+                                                        bottom: 0
+                                                      },
+                                                      label: {
+                                                         text: 'Total Resondents (n=' +df.length+")",
+                                                         position: 'outer-middle',
+
+                                                       },
+
+                                                     },
+                                                     rotated: true
+                                                   },
+                                                   legend: {
+                                                     show: false
+                                                   },
+
+                                                  bindto: "#demochart"
+                                                  });
+
+
+                                  });
+
+
+            // Click on All Data
+
+
+
+            function updateData1() {
+            Promise.all([
+            d3.csv('assets/lwcf/tester.csv',d3.autoType),
+            ]).then(function(datasets) {
+              var df = datasets[0];
+              var df1 = df.filter(function(d) { return d.Q35 == "FY 22"; })
+
+
+                // Estimated Cost Range
+              var estcost = d3.nest()
+              .key(function(d) { return d.Q13; })
+              .rollup(function(v) { return v.length; })
+              .entries(df);
+
+              estcost.forEach(function(e){
+                if ( e.key == "$1,750,000+" ){
+                  e["ranges"] = 8
+                }
+                if ( e.key == "$1,500,000 - $1,750,000" ){
+                  e["ranges"] = 7
+                }
+                if ( e.key == "$1,250,001 - $1,500,000" ){
+                  e["ranges"] = 6
+                }
+                if ( e.key == "$1,000,001 - $1,250,000" ){
+                  e["ranges"] = 5
+                }
+                if ( e.key == "$750,0001 - $1,000,000" ){
+                  e["ranges"] = 4
+                }
+                if ( e.key == "$500,001 - $750,000" ){
+                  e["ranges"] = 3
+                }
+                if ( e.key == "$250,001 - $500,000" ){
+                  e["ranges"] = 2
+                }
+                if ( e.key == "$0 - $250,000" ){
+                  e["ranges"] = 1
+                }
+                if ( e.key == "Unknown" ){
+                  e["ranges"] = 0
+                }
+              });
+              estcost.sort(function(a, b){ return d3.descending(a.ranges, b.ranges); });
+              var i;
+              for(i = 0; i < estcost.length; i++){
+                estcost[i].Respondents = estcost[i]['value']/df.length;
+              }
+
+                // 7. Project Type
+                var protypeCount = d3.nest()
+                .key(function(d) { return d.Q31; })
+                .rollup(function(v) { return v.length; })
+                .entries(df);
+
+                var protypedata = {};
+                var sites = [];
+                protypeCount.forEach(function(e) {
+                sites.push(e.key);
+                protypedata[e.key] = e.value;
+                })
+
+                // 8. How would you best categorize the project?
+                var procatCount = d3.nest()
+                .key(function(d) { return d.Q10; })
+                .rollup(function(v) { return v.length; })
+                .entries(df);
+
+                var procatdata = {};
+                var sitescat = [];
+                procatCount.forEach(function(e) {
+                sitescat.push(e.key);
+                procatdata[e.key] = e.value;
+                })
+                // New concept ideas
+                var concept = d3.nest()
+                .key(function(d) { return d.Q22; })
+                .rollup(function(v) { return v.length; })
+                .entries(df);
+
+                var conceptdata = {};
+                var conceptsites = [];
+                concept.forEach(function(e) {
+                conceptsites.push(e.key);
+                conceptdata[e.key] = e.value;
+                })
+
+
+                //9. Multi question land
+                var q9 = df.map(function(d) {
+                  return {
+                    q9: d.Q9,
+                  }
+                });
+
+                result = [].concat(
+                    ...q9.map(
+                        ({ q9 }) => q9.split(',').map(
+                           land => ({ land })
+                       )
+                   )
+               );
+
+
+               var lwcfp = d3.nest()
+               .key(function(d) { return d.land; })
+               .rollup(function(v) { return v.length; })
+               .entries(result)
+               .sort(function(a, b){ return d3.descending(a.value, b.value); });
+               var lands1 = [];
+               var i;
+               for(i = 0; i < lwcfp.length; i++){
+                 lwcfp[i].Respondents = lwcfp[i]['value']/df.length;
+
+               }
+               lwcfp.forEach(function(e) {
+                  lands1.push(e.key);
+               })
+
+
+               // Estimated cost
+               var q20 = df.map(function(d) {
+                 return {
+                   q20: d.Q20,
+                 }
+               });
+               results = [].concat(
+                   ...q20.map(
+                       ({ q20 }) => q20.split(',').map(
+                          rectype => ({ rectype })
+                      )
+                  )
+              );
+              var demo = d3.nest()
+              .key(function(d) { return d.rectype; })
+              .rollup(function(v) { return v.length; })
+              .entries(results)
+              .sort(function(a, b){ return d3.descending(a.value, b.value); });
+              var demo1 = [];
+              var i;
+              for(i = 0; i < demo.length; i++){
+                demo[i].Respondents = demo[i]['value']/df.length;
+              }
+              demo.forEach(function(e) {
+                 demo1.push(e.key);
+              })
+
+              // Estimated Rec type
+
+              var q15 = df.map(function(d) {
+
+                return {
+                  q15: d.Q15,
+                }
+
+              });
+              console.log()
+
+              resultrec = [].concat(
+                  ...q15.map(
+                      ({ q15 }) => q15.split(',').map(
+                         rectype => ({ rectype })
+                     )
+                 )
+             );
+             var rec = d3.nest()
+             .key(function(d) { return d.rectype; })
+             .rollup(function(v) { return v.length; })
+             .entries(resultrec)
+             .sort(function(a, b){ return d3.descending(a.value, b.value); });
+             var rec1 = [];
+             var i;
+             for(i = 0; i < rec.length; i++){
+               rec[i].Respondents = rec[i]['value']/df.length;
+             }
+             rec.forEach(function(e) {
+                rec1.push(e.key);
+             })
+                console.log(rec)
+
+
+
+                            var chart = c3.generate({
+
+                              data: {
+                                json: estcost,
+                                keys: {
+                                  x: 'key',
+                                    value: ['Respondents'],
+                                },
+                                type: 'bar',
+                                color: function (color, d) {
+                                           return color8[d.index];
+                                       },
+                                labels: {
+                                  format:function (v, id, i, j) { var formatPercent = d3.format(",.2%"); return formatPercent(v); }
+                                },
+                              },
+                              axis: {
+                                x: {
+                                  label: {
+                                    text: 'Estimated Cost Range',
+                                    position: 'outer-center',
+                                  },
+                                  type: 'category',
+                                  // categories:  [ "$1,750,000+","$1,500,000 - $1,750,000","$1,250,001 - $1,500,000",'$1,000,001-$1,250,000',"$750,0001 - $1,000,000","$500,001 - $750,000","$250,001 - $500,000","$0 - $250,000",'Unknown'],
+                                  tick: {
+                                    centered: true
+                                  }
+                                },
+                                y: {
+                                  tick:{
+                                    format: d3.format('.0%')
+                                  },
+                                  label: {
+                                     text: '% of total Respondents',
+                                     position: 'outer-middle'
+                                   },
+                                   max: .3,
+                                   min: 0,
+                                   padding: {
+                                     top: 0,
+                                     bottom: 0
+                                   }
+                                 },
+                                 rotated: true
+                               },
+                               legend: {
+                                 show: false
+                               },
+                               bindto: "#cost-chart"
+                             });
+
+
+
+                                var chart = c3.generate({
+                                  data: {
+                                      json: [ protypedata ],
+                                      keys: {
+                                          value: sites,
+                                      },
+                                      type:'pie'
+                                  },
+                                       axis: {
+                                         x: {
+                                           type: 'category'
+                                         }
+                                          },
+                                       color: {
+                                         pattern: [color7[0], color7[2], color7[3], color7[4], 'grey']
+                                       },
+                                       bindto: "#chart"
+                                     });
+
+                                     var conceptchart = c3.generate({
+                                       data: {
+                                           json: [ conceptdata ],
+                                           keys: {
+                                               value: conceptsites,
+                                           },
+                                           type:'pie'
+                                       },
+                                            axis: {
+                                              x: {
+                                                type: 'category'
+                                              }
+                                               },
+                                            color: {
+                                              pattern: [color7[0], color7[2], color7[3], color7[4], 'grey']
+                                            },
+                                            bindto: "#conceptchart"
+                                          });
+
+
+                              var catchart = c3.generate({
+                                data: {
+                                  json: [ procatdata ],
+                                  keys: {
+                                      value: sitescat,
+                                  },
+                                  type : 'pie',
+                                     },
+                                     axis: {
+                                       x: {
+                                         type: 'category'
+                                       }
+                                        },
+                                     color: {
+                                       pattern: [color7[0], color7[2], color7[3],color7[4],color7[5],color7[6]]
+                                     },
+
+                                bindto: "#catchart"
+                              });
+
+
+                              var barchart = c3.generate({
+                                data: {
+                                    json: lwcfp,
+                                    keys: {
+                                      x: 'key',
+                                        value: ['Respondents'],
+                                    },
+                                    type: 'bar',
+                                    color: function (color, d) {
+                                               return color8[d.index];
+                                           },
+                                           labels: {
+                                             format:function (v, id, i, j) { var formatPercent = d3.format(",.0%"); return formatPercent(v); }
+                                           },
+                                },
+
+                                  axis: {
+                                    x: {
+                                      label: {
+                                        text: '',
+                                        position: 'outer-center',
+                                      },
+                                      type: 'category',
+                                      categories: lands1,
+                                      tick: {
+                                        centered: true,
+                                      }
+                                    },
+                                    y: {
+                                      tick:{
+                                        format: d3.format('.0%')
+                                      },
+                                      max: 1,
+                                      min: 0,
+                                      padding: {
+                                        top: 0,
+                                        bottom: 0
+                                      },
+                                      label: {
+                                         text: 'Total Resondents (n=' +df.length+")",
+                                         position: 'outer-middle',
+
+                                       },
+
+                                     },
+                                     rotated: true
+                                   },
+                                   legend: {
+                                     show: false
+                                   },
+
+                                  bindto: "#barchart"
+                                  });
+
+
+                                  var recchart = c3.generate({
+                                    data: {
+                                        json: rec,
+                                        keys: {
+                                          x: 'key',
+                                            value: ['Respondents'],
+                                        },
+                                        type: 'bar',
+                                        color: function (color, d) {
+                                                   return color20[d.index];
+                                               },
+                                               labels: {
+                                                 format:function (v, id, i, j) { var formatPercent = d3.format(",.0%"); return formatPercent(v); }
+                                               },
+                                    },
+
+                                      axis: {
+                                        x: {
+                                          label: {
+                                            text: '',
+                                            position: 'outer-center',
+                                          },
+                                          type: 'category',
+                                          categories: lands1,
+                                          tick: {
+                                            centered: true,
+                                          }
+                                        },
+                                        y: {
+                                          tick:{
+                                            format: d3.format('.0%')
+                                          },
+                                          max: 1,
+                                          min: 0,
+                                          padding: {
+                                            top: 0,
+                                            bottom: 0
+                                          },
+                                          label: {
+                                             text: 'Total Resondents (n=' +df.length+")",
+                                             position: 'outer-middle',
+
+                                           },
+
+                                         },
+                                         rotated: true
+                                       },
+                                       legend: {
+                                         show: false
+                                       },
+
+                                      bindto: "#recchart"
+                                      });
+
+                                  var recchart = c3.generate({
+                                    data: {
+                                        json: demo,
+                                        keys: {
+                                          x: 'key',
+                                            value: ['Respondents'],
+                                        },
+                                        type: 'bar',
+                                        color: function (color, d) {
+                                                   return color14[d.index];
+                                               },
+                                               labels: {
+                                                 format:function (v, id, i, j) { var formatPercent = d3.format(",.0%"); return formatPercent(v); }
+                                               },
+                                    },
+
+                                      axis: {
+                                        x: {
+                                          label: {
+                                            text: 'Demographic',
+                                            position: 'outer-center',
+                                          },
+                                          padding: {
+                                            left: 0,
+                                            right: 0,
+                                          },
+                                          type: 'category',
+                                          categories: lands1,
+                                          tick: {
+                                            centered: true,
+                                          }
+                                        },
+                                        y: {
+                                          tick:{
+                                            format: d3.format('.0%'),
+
+                                          },
+                                          max: 1,
+                                          min: 0,
+                                          padding: {
+                                            top: 20,
+                                            bottom: 0
+                                          },
+                                          label: {
+                                             text: 'Total Resondents (n=' +df.length+")",
+                                             position: 'outer-middle',
+
+                                           },
+
+                                         },
+                                         rotated: true
+                                       },
+                                       legend: {
+                                         show: false
+                                       },
+
+                                      bindto: "#demochart"
+                                      });
+
+
+                      });
+                    }
+
+
+                      // Click on FY2022 Data
+                      function updateData(){
+                        Promise.all([
+                        d3.csv('assets/lwcf/tester.csv',d3.autoType),
+                        ]).then(function(datasets) {
+                          var df = datasets[0];
+                          var df = df.filter(function(d) { return d.Q35 == "FY 22"; })
+
+
+                            // Estimated Cost Range
+                          var estcost = d3.nest()
+                          .key(function(d) { return d.Q13; })
+                          .rollup(function(v) { return v.length; })
+                          .entries(df);
+
+                          estcost.forEach(function(e){
+                            if ( e.key == "$1,750,000+" ){
+                              e["ranges"] = 8
+                            }
+                            if ( e.key == "$1,500,000 - $1,750,000" ){
+                              e["ranges"] = 7
+                            }
+                            if ( e.key == "$1,250,001 - $1,500,000" ){
+                              e["ranges"] = 6
+                            }
+                            if ( e.key == "$1,000,001 - $1,250,000" ){
+                              e["ranges"] = 5
+                            }
+                            if ( e.key == "$750,0001 - $1,000,000" ){
+                              e["ranges"] = 4
+                            }
+                            if ( e.key == "$500,001 - $750,000" ){
+                              e["ranges"] = 3
+                            }
+                            if ( e.key == "$250,001 - $500,000" ){
+                              e["ranges"] = 2
+                            }
+                            if ( e.key == "$0 - $250,000" ){
+                              e["ranges"] = 1
+                            }
+                            if ( e.key == "Unknown" ){
+                              e["ranges"] = 0
+                            }
+                          });
+                          estcost.sort(function(a, b){ return d3.descending(a.ranges, b.ranges); });
+                          var i;
+                          for(i = 0; i < estcost.length; i++){
+                            estcost[i].Respondents = estcost[i]['value']/df.length;
+                          }
+
+                            // 7. Project Type
+                            var protypeCount = d3.nest()
+                            .key(function(d) { return d.Q31; })
+                            .rollup(function(v) { return v.length; })
+                            .entries(df);
+
+                            var protypedata = {};
+                            var sites = [];
+                            protypeCount.forEach(function(e) {
+                            sites.push(e.key);
+                            protypedata[e.key] = e.value;
+                            })
+
+                            // 8. How would you best categorize the project?
+                            var procatCount = d3.nest()
+                            .key(function(d) { return d.Q10; })
+                            .rollup(function(v) { return v.length; })
+                            .entries(df);
+
+                            var procatdata = {};
+                            var sitescat = [];
+                            procatCount.forEach(function(e) {
+                            sitescat.push(e.key);
+                            procatdata[e.key] = e.value;
+                            })
+                            // New concept ideas
+                            var concept = d3.nest()
+                            .key(function(d) { return d.Q22; })
+                            .rollup(function(v) { return v.length; })
+                            .entries(df);
+
+                            var conceptdata = {};
+                            var conceptsites = [];
+                            concept.forEach(function(e) {
+                            conceptsites.push(e.key);
+                            conceptdata[e.key] = e.value;
+                            })
+
+
+                            //9. Multi question land
+                            var q9 = df.map(function(d) {
+                              return {
+                                q9: d.Q9,
+                              }
+                            });
+
+                            result = [].concat(
+                                ...q9.map(
+                                    ({ q9 }) => q9.split(',').map(
+                                       land => ({ land })
+                                   )
+                               )
+                           );
+
+
+                           var lwcfp = d3.nest()
+                           .key(function(d) { return d.land; })
+                           .rollup(function(v) { return v.length; })
+                           .entries(result)
+                           .sort(function(a, b){ return d3.descending(a.value, b.value); });
+                           var lands1 = [];
+                           var i;
+                           for(i = 0; i < lwcfp.length; i++){
+                             lwcfp[i].Respondents = lwcfp[i]['value']/df.length;
+
+                           }
+                           lwcfp.forEach(function(e) {
+                              lands1.push(e.key);
+                           })
+
+
+                           // Estimated cost
+                           var q20 = df.map(function(d) {
+                             return {
+                               q20: d.Q20,
+                             }
+                           });
+                           results = [].concat(
+                               ...q20.map(
+                                   ({ q20 }) => q20.split(',').map(
+                                      rectype => ({ rectype })
+                                  )
+                              )
+                          );
+                          var demo = d3.nest()
+                          .key(function(d) { return d.rectype; })
+                          .rollup(function(v) { return v.length; })
+                          .entries(results)
+                          .sort(function(a, b){ return d3.descending(a.value, b.value); });
+                          var demo1 = [];
+                          var i;
+                          for(i = 0; i < demo.length; i++){
+                            demo[i].Respondents = demo[i]['value']/df.length;
+                          }
+                          demo.forEach(function(e) {
+                             demo1.push(e.key);
+                          })
+
+                          // Estimated Rec type
+
+                          var q15 = df.map(function(d) {
+
+                            return {
+                              q15: d.Q15,
+                            }
+
+                          });
+                          console.log()
+
+                          resultrec = [].concat(
+                              ...q15.map(
+                                  ({ q15 }) => q15.split(',').map(
+                                     rectype => ({ rectype })
+                                 )
+                             )
+                         );
+                         var rec = d3.nest()
+                         .key(function(d) { return d.rectype; })
+                         .rollup(function(v) { return v.length; })
+                         .entries(resultrec)
+                         .sort(function(a, b){ return d3.descending(a.value, b.value); });
+                         var rec1 = [];
+                         var i;
+                         for(i = 0; i < rec.length; i++){
+                           rec[i].Respondents = rec[i]['value']/df.length;
+                         }
+                         rec.forEach(function(e) {
+                            rec1.push(e.key);
+                         })
+                            console.log(rec)
+
+
+
+                                        var chart = c3.generate({
+
+                                          data: {
+                                            json: estcost,
+                                            keys: {
+                                              x: 'key',
+                                                value: ['Respondents'],
+                                            },
+                                            type: 'bar',
+                                            color: function (color, d) {
+                                                       return color8[d.index];
+                                                   },
+                                            labels: {
+                                              format:function (v, id, i, j) { var formatPercent = d3.format(",.2%"); return formatPercent(v); }
+                                            },
+                                          },
+                                          axis: {
+                                            x: {
+                                              label: {
+                                                text: 'Estimated Cost Range',
+                                                position: 'outer-center',
+                                              },
+                                              type: 'category',
+                                              // categories:  [ "$1,750,000+","$1,500,000 - $1,750,000","$1,250,001 - $1,500,000",'$1,000,001-$1,250,000',"$750,0001 - $1,000,000","$500,001 - $750,000","$250,001 - $500,000","$0 - $250,000",'Unknown'],
+                                              tick: {
+                                                centered: true
+                                              }
+                                            },
+                                            y: {
+                                              tick:{
+                                                format: d3.format('.0%')
+                                              },
+                                              label: {
+                                                 text: '% of total Respondents',
+                                                 position: 'outer-middle'
+                                               },
+                                               max: .3,
+                                               min: 0,
+                                               padding: {
+                                                 top: 0,
+                                                 bottom: 0
+                                               }
+                                             },
+                                             rotated: true
+                                           },
+                                           legend: {
+                                             show: false
+                                           },
+                                           bindto: "#cost-chart"
+                                         });
+
+
+
+                                            var chart = c3.generate({
+                                              data: {
+                                                  json: [ protypedata ],
+                                                  keys: {
+                                                      value: sites,
+                                                  },
+                                                  type:'pie'
+                                              },
+                                                   axis: {
+                                                     x: {
+                                                       type: 'category'
+                                                     }
+                                                      },
+                                                   color: {
+                                                     pattern: [color7[0], color7[2], color7[3], color7[4], 'grey']
+                                                   },
+                                                   bindto: "#chart"
+                                                 });
+
+                                                 var conceptchart = c3.generate({
+                                                   data: {
+                                                       json: [ conceptdata ],
+                                                       keys: {
+                                                           value: conceptsites,
+                                                       },
+                                                       type:'pie'
+                                                   },
+                                                        axis: {
+                                                          x: {
+                                                            type: 'category'
+                                                          }
+                                                           },
+                                                        color: {
+                                                          pattern: [color7[0], color7[2], color7[3], color7[4], 'grey']
+                                                        },
+                                                        bindto: "#conceptchart"
+                                                      });
+
+
+                                          var catchart = c3.generate({
+                                            data: {
+                                              json: [ procatdata ],
+                                              keys: {
+                                                  value: sitescat,
+                                              },
+                                              type : 'pie',
+                                                 },
+                                                 axis: {
+                                                   x: {
+                                                     type: 'category'
+                                                   }
+                                                    },
+                                                 color: {
+                                                   pattern: [color7[0], color7[2], color7[3],color7[4],color7[5],color7[6]]
+                                                 },
+
+                                            bindto: "#catchart"
+                                          });
+
+
+                                          var barchart = c3.generate({
+                                            data: {
+                                                json: lwcfp,
+                                                keys: {
+                                                  x: 'key',
+                                                    value: ['Respondents'],
+                                                },
+                                                type: 'bar',
+                                                color: function (color, d) {
+                                                           return color8[d.index];
+                                                       },
+                                                       labels: {
+                                                         format:function (v, id, i, j) { var formatPercent = d3.format(",.0%"); return formatPercent(v); }
+                                                       },
+                                            },
+
+                                              axis: {
+                                                x: {
+                                                  label: {
+                                                    text: '',
+                                                    position: 'outer-center',
+                                                  },
+                                                  type: 'category',
+                                                  categories: lands1,
+                                                  tick: {
+                                                    centered: true,
+                                                  }
+                                                },
+                                                y: {
+                                                  tick:{
+                                                    format: d3.format('.0%')
+                                                  },
+                                                  max: 1,
+                                                  min: 0,
+                                                  padding: {
+                                                    top: 0,
+                                                    bottom: 0
+                                                  },
+                                                  label: {
+                                                     text: 'Total Resondents (n=' +df.length+")",
+                                                     position: 'outer-middle',
+
+                                                   },
+
+                                                 },
+                                                 rotated: true
+                                               },
+                                               legend: {
+                                                 show: false
+                                               },
+
+                                              bindto: "#barchart"
+                                              });
+
+
+                                              var recchart = c3.generate({
+                                                data: {
+                                                    json: rec,
+                                                    keys: {
+                                                      x: 'key',
+                                                        value: ['Respondents'],
+                                                    },
+                                                    type: 'bar',
+                                                    color: function (color, d) {
+                                                               return color20[d.index];
+                                                           },
+                                                           labels: {
+                                                             format:function (v, id, i, j) { var formatPercent = d3.format(",.0%"); return formatPercent(v); }
+                                                           },
+                                                },
+
+                                                  axis: {
+                                                    x: {
+                                                      label: {
+                                                        text: '',
+                                                        position: 'outer-center',
+                                                      },
+                                                      type: 'category',
+                                                      categories: lands1,
+                                                      tick: {
+                                                        centered: true,
+                                                      }
+                                                    },
+                                                    y: {
+                                                      tick:{
+                                                        format: d3.format('.0%')
+                                                      },
+                                                      max: 1,
+                                                      min: 0,
+                                                      padding: {
+                                                        top: 0,
+                                                        bottom: 0
+                                                      },
+                                                      label: {
+                                                         text: 'Total Resondents (n=' +df.length+")",
+                                                         position: 'outer-middle',
+
+                                                       },
+
+                                                     },
+                                                     rotated: true
+                                                   },
+                                                   legend: {
+                                                     show: false
+                                                   },
+
+                                                  bindto: "#recchart"
+                                                  });
+
+                                              var recchart = c3.generate({
+                                                data: {
+                                                    json: demo,
+                                                    keys: {
+                                                      x: 'key',
+                                                        value: ['Respondents'],
+                                                    },
+                                                    type: 'bar',
+                                                    color: function (color, d) {
+                                                               return color14[d.index];
+                                                           },
+                                                           labels: {
+                                                             format:function (v, id, i, j) { var formatPercent = d3.format(",.0%"); return formatPercent(v); }
+                                                           },
+                                                },
+
+                                                  axis: {
+                                                    x: {
+                                                      label: {
+                                                        text: 'Demographic',
+                                                        position: 'outer-center',
+                                                      },
+                                                      padding: {
+                                                        left: 0,
+                                                        right: 0,
+                                                      },
+                                                      type: 'category',
+                                                      categories: lands1,
+                                                      tick: {
+                                                        centered: true,
+                                                      }
+                                                    },
+                                                    y: {
+                                                      tick:{
+                                                        format: d3.format('.0%'),
+
+                                                      },
+                                                      max: 1,
+                                                      min: 0,
+                                                      padding: {
+                                                        top: 20,
+                                                        bottom: 0
+                                                      },
+                                                      label: {
+                                                         text: 'Total Resondents (n=' +df.length+")",
+                                                         position: 'outer-middle',
+
+                                                       },
+
+                                                     },
+                                                     rotated: true
+                                                   },
+                                                   legend: {
+                                                     show: false
+                                                   },
+
+                                                  bindto: "#demochart"
+                                                  });
+
+
+                                  });
+                      }
+
+
+
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141661518-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-141661518-4');
+</script>
+</body>
+</html>
