@@ -11,16 +11,24 @@ This dashboard is to represent a survey conducted by Outdoor Recreation Roundtab
 ## Libraries
 #### Map
 [MapBox](www.mapbox.com)
+
 [Leaflet](https://leafletjs.com/)
+
 [Leaflet Sidebar](https://github.com/Turbo87/leaflet-sidebar)
+
 [Leaflet Cluster](https://github.com/Leaflet/Leaflet.markercluster)
+
 #### Font
 [Google font](https://fonts.google.com/)
+
 #### Data & Charts
 [D3.js](https://d3js.org/)
+
 [C3.js](https://c3js.org/)
 
 #### Responsive Layout
 [bootstrap.js](https://getbootstrap.com/)
+
 [chroma.js](https://gka.github.io/chroma.js/)
+
 [Font Awesome](https://fontawesome.com/)
