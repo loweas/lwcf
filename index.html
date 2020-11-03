@@ -115,9 +115,11 @@
         </form>
 
         <br>
-        <a href="assets/lwcf/lwcfsurvey.csv" download>
-          Click Me for Survey Data
+        <button type="button">
+        <a href="assets/lwcf/lwcfsurvey.csv" download >
+          Click Me for Survey Data.csv
         </a>
+        </button>
       </div>
 
       <br>
@@ -365,11 +367,9 @@
         return d.Q35 == "FY 22";
       })
 
-
       const dfs = [df1,
         df2
       ];
-
 
       // Radio Caller button
       const buttons = d3.selectAll('input');

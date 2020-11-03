@@ -35,6 +35,13 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+#rcorners {
+  border-radius: 25px;
+  border: 2px solid #28a745;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+}
 
 #map{
   width: 100%;
@@ -452,14 +459,14 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: #5c8e53;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 
 a:hover {
-  color: #0056b3;
+  color: #8E535C;
   text-decoration: underline;
 }
 
@@ -528,7 +535,15 @@ label {
 }
 
 button {
-  border-radius: 0;
+  background-color:  /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
 }
 
 button:focus {
