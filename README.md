@@ -26,6 +26,8 @@ This dashboard is to represent a survey conducted by Outdoor Recreation Roundtab
 
 [C3.js](https://c3js.org/)
 
+[Rstudio](https://rstudio.com/)
+
 #### Responsive Layout
 [bootstrap.js](https://getbootstrap.com/)
 
