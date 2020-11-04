@@ -1,4 +1,5 @@
 library(readr)
+## The file name needs to be changed
 LandWCF <- read_csv("~/Downloads/LandWCF_November 4, 2020_10.05.csv")
 test <- LandWCF[-c(1:2),] 
 test <- test[-c(1:17)] 
@@ -21,7 +22,6 @@ tester1$StateAp<-NULL
 tester=rbind(tester,tester1)
 
 
-
 library(dplyr)
 
 
@@ -38,6 +38,9 @@ tester$Q15<-gsub("\\:", "", tester$Q15)
 
 
 write.csv(tester, file="lwcfsurvey.csv")
+library("geojsonio", lib.loc="/Library/Frameworks/R.framework/Versions/3.5/Resources/library")
+geojson_write(tester, file = "lwcf.geojson")
+
 
 
 

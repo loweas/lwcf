@@ -303,8 +303,7 @@
     });
     var tests = null;
     // Get GeoJSON and put on it on the map when it loads
-    tests = L.geoJson.ajax("assets/lwcf.geojson", {
-
+    tests = L.geoJson.ajax("assets/lwcf/lwcf.geojson", {
     })
 
     tests.on('data:loaded', function() {
@@ -348,7 +347,7 @@
       type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
 
       var rec = document.getElementById('rec');
-      if (e.layer.feature.properties.Q15_14_TEXT == "NA") {
+      if (e.layer.feature.properties.Q15_14_TEXT == null) {
         rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
       } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
 
