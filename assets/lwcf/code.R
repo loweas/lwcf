@@ -1,13 +1,20 @@
 library(readr)
-LandWCF_Copy_October_17_2020_11_29 <- read_csv("~/Downloads/LandWCF_November 1, 2020_16.42.csv")
-
+LandWCF <- read_csv("~/Downloads/LandWCF_November 4, 2020_10.05.csv")
+test <- LandWCF[-c(1:2),] 
+test <- test[-c(1:17)] 
+library(dplyr)
+test= test %>% 
+  rename(
+    State = Q6_1,
+    County = Q6_2
+  )
 
 library(readr)
 centroidsUS <- read_csv("~/workspace/lwcf/assets/centroidsUS.csv")
-tester<-merge(centroidsUS, LandWCF_Copy_October_17_2020_11_29, by.x=c('State','County'), all=FALSE)
+tester<-merge(centroidsUS, test, by.x=c('State','County'), all=FALSE)
 
 ##Finding those thatt didn't fill in County
-t<-LandWCF_Copy_October_17_2020_11_29[- grep("", LandWCF_Copy_October_17_2020_11_29$County),]
+t<-test[- grep("", test$County),]
 tester1<-merge(centroidstates, t, by.x='State', all=FALSE)
 tester1$StateAp<-NULL
 
