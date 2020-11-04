@@ -4,8 +4,13 @@ This dashboard is to represent a survey conducted by Outdoor Recreation Roundtab
 ## Process
 1. Download Qualtric survey
 2. Run through R to Clean data.
-3. R also contains code to write CSV and geojson file. Currently named "lwcf.geojson" & "lwcf.csv"
-4. Push file to assest
+    - This will clean columns rows.
+    - Merge on centeroids on County
+    - If no county, then merge on State centeroids.
+    - Clean up unneeded strings in column.
+    - Write lwcf.csv file
+    - Write lwcf.geojson file
+4. Push new assets to github
 5. Done!
 
 ## Libraries
