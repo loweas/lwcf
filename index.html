@@ -314,10 +314,10 @@ var masClusGroup = new L.markerClusterGroup().addTo(map);
 
     var all = L.featureGroup.subGroup(masClusGroup).addTo(map);
     fy = L.featureGroup.subGroup(masClusGroup);
-    // development = L.featureGroup.subGroup(masClusGroup).addTo(map);
-    // plan = L.featureGroup.subGroup(masClusGroup).addTo(map);
-    // combo = L.featureGroup.subGroup(masClusGroup).addTo(map);
-    // aqu = L.featureGroup.subGroup(masClusGroup).addTo(map);
+    development = L.featureGroup.subGroup(masClusGroup);
+    plan = L.featureGroup.subGroup(masClusGroup);
+    combo = L.featureGroup.subGroup(masClusGroup);
+    aqu = L.featureGroup.subGroup(masClusGroup);
 
 
 
@@ -370,14 +370,15 @@ var masClusGroup = new L.markerClusterGroup().addTo(map);
   var overlayMaps = {
     "All": all,
     "FY 2022": fy,
+    "Development": development,
+    "Aquisition": aqu,
+    "Combination (A&D)": combo,
+    "Planning": plan,
 };
 
 var baselayer = {
 
-  // "Development": development,
-  // "Aquisition": aqu,
-  // "Combination (A&D)": combo,
-  // "Planning": plan,
+
 
 };
 
