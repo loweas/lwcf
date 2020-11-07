@@ -7,15 +7,14 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/leaflet.css" />
   <link rel="stylesheet" href="css/L.Control.Sidebar.css" />
   <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Cinzel:wght@500&family=Commissioner:wght@300&family=Josefin+Sans:wght@500&family=Raleway:wght@300&display=swap" rel="stylesheet">
 
   <!-- JavaScript -->
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+  <script src="js/leaflet.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -24,7 +23,7 @@
   <script src="js/c3.min.js"></script>
   <script src="js/chroma.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-  <script src="js/leaflet.featuregroup.subgroup.js"></script>
+
 </head>
 
 <body>
@@ -300,89 +299,21 @@
       attribution: 'Made By <a href="https://github.com/loweas">loweas</a>',
     }).addTo(map);
 
-
+    var markers = L.markerClusterGroup({
+      disableClusteringAtZoom: 9
+    });
 
     var tests = null;
     // Get GeoJSON and put on it on the map when it loads
+    tests = L.geoJson.ajax("assets/lwcf/lwcf.geojson", {
 
+    })
 
-var masClusGroup = new L.markerClusterGroup().addTo(map);
+    tests.on('data:loaded', function() {
+      markers.addLayer(tests);
+      map.addLayer(markers);
 
-    // var masClusGroup = L.markerClusterGroup({
-    //   disableClusteringAtZoom: 9
-    // });
-
-    var all = L.featureGroup.subGroup(masClusGroup).addTo(map);
-    fy = L.featureGroup.subGroup(masClusGroup);
-    // development = L.featureGroup.subGroup(masClusGroup).addTo(map);
-    // plan = L.featureGroup.subGroup(masClusGroup).addTo(map);
-    // combo = L.featureGroup.subGroup(masClusGroup).addTo(map);
-    // aqu = L.featureGroup.subGroup(masClusGroup).addTo(map);
-
-
-
-
-
-    var url1 = "assets/lwcf/lwcf.geojson";
-
-    $.getJSON(url1, function(data) {
-            geojsonlayer= L.geoJson(data, {
-                onEachFeature: function (feature, layer) {
-              }
-            }).addTo(all);
-         });
-    $.getJSON(url1, function(data) {
-                 geojsonlayer= L.geoJson(data, {
-                       filter: function(feature, layer) {
-                           return feature.properties.Q35 =="FY 22";
-                       }
-                 }).addTo(fy);
-              });
-              $.getJSON(url1, function(data) {
-                           geojsonlayer= L.geoJson(data, {
-                                 filter: function(feature, layer) {
-                                     return feature.properties.Q31 =="Development";
-                                 }
-                           }).addTo(development);
-                        });
-              $.getJSON(url1, function(data) {
-                        geojsonlayer= L.geoJson(data, {
-                        filter: function(feature, layer) {
-                             return feature.properties.Q31 =="Planning";
-                          }
-                       }).addTo(plan);
-                });
-                $.getJSON(url1, function(data) {
-                          geojsonlayer= L.geoJson(data, {
-                          filter: function(feature, layer) {
-                               return feature.properties.Q31 =="Acquisition";
-                            }
-                         }).addTo(aqu);
-                  });
-                  $.getJSON(url1, function(data) {
-                            geojsonlayer= L.geoJson(data, {
-                            filter: function(feature, layer) {
-                                 return feature.properties.Q31 =="Combination (Acquisition and Development)";
-                              }
-                           }).addTo(combo);
-                    });
-
-  var overlayMaps = {
-    "All": all,
-    "FY 2022": fy,
-};
-
-var baselayer = {
-
-  // "Development": development,
-  // "Aquisition": aqu,
-  // "Combination (A&D)": combo,
-  // "Planning": plan,
-
-};
-
- L.control.layers(overlayMaps,baselayer,{collapsed:false,position: 'bottomleft'}).addTo(map);
-
+    });
 
     var sidebar = L.control.sidebar('sidebar', {
       closeButton: true,
@@ -391,9 +322,8 @@ var baselayer = {
 
     map.addControl(sidebar);
 
+    tests.on('click', function(e) {
 
-// This is for all points
-    all.on('click', function(e) {
       sidebar.toggle();
       var pro = document.getElementById('pro');
       pro.innerHTML = e.layer.feature.properties.Q5_1;
@@ -423,41 +353,8 @@ var baselayer = {
       if (e.layer.feature.properties.Q15_14_TEXT == null) {
         rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
       } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
+
     });
-
-//This is for FY 2022
-    fy.on('click', function(e) {
-      sidebar.toggle();
-      var pro = document.getElementById('pro');
-      pro.innerHTML = e.layer.feature.properties.Q5_1;
-
-      var fy22 = document.getElementById('fy22');
-      if (e.layer.feature.properties.Q35 == "FY 22") {
-        fy22.innerHTML = "Financal Year 2022"
-      } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
-        fy22.innerHTML = "Financal Year 2023 & Beyond"
-      } else(fy22.innerHTML = "")
-
-      var name = document.getElementById('org');
-      if (e.layer.feature.properties.Q1_1 == "NA") {
-        name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
-      } else(name.innerHTML = e.layer.feature.properties.Q1_1)
-
-      var des = document.getElementById('description');
-      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
-
-      var cos = document.getElementById('cos');
-      cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
-
-      var type = document.getElementById('type');
-      type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
-
-      var rec = document.getElementById('rec');
-      if (e.layer.feature.properties.Q15_14_TEXT == null) {
-        rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
-      } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
-    });
-
 
     map.once('focus', function() {
       map.scrollWheelZoom.enable();
