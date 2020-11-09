@@ -306,11 +306,18 @@
     // Get GeoJSON and put on it on the map when it loads
 
 
-var masClusGroup = new L.markerClusterGroup().addTo(map);
 
-    // var masClusGroup = L.markerClusterGroup({
-    //   disableClusteringAtZoom: 9
-    // });
+    var masClusGroup = new L.markerClusterGroup({  disableClusteringAtZoom: 9}).addTo(map);
+
+    // var all = L.markerClusterGroup().addTo(map);
+    //
+    // var fy = L.featureGroup.subGroup(all).addTo(map);
+    // development = L.featureGroup.subGroup(all).addTo(map);
+    // plan = L.featureGroup.subGroup(all).addTo(map);
+    // combo = L.featureGroup.subGroup(all).addTo(map);
+    // aqu = L.featureGroup.subGroup(all).addTo(map);
+    //
+
 
     var all = L.featureGroup.subGroup(masClusGroup).addTo(map);
     fy = L.featureGroup.subGroup(masClusGroup);
@@ -321,14 +328,13 @@ var masClusGroup = new L.markerClusterGroup().addTo(map);
 
 
 
-
-
     var url1 = "assets/lwcf/lwcf.geojson";
 
     $.getJSON(url1, function(data) {
             geojsonlayer= L.geoJson(data, {
-                onEachFeature: function (feature, layer) {
-              }
+              // filter: function(feature, layer) {
+              //     return feature.properties.Q35 !="FY 22";
+              // }
             }).addTo(all);
          });
     $.getJSON(url1, function(data) {
@@ -338,28 +344,28 @@ var masClusGroup = new L.markerClusterGroup().addTo(map);
                        }
                  }).addTo(fy);
               });
-              $.getJSON(url1, function(data) {
-                           geojsonlayer= L.geoJson(data, {
-                                 filter: function(feature, layer) {
-                                     return feature.properties.Q31 =="Development";
+    $.getJSON(url1, function(data) {
+          geojsonlayer= L.geoJson(data, {
+                   filter: function(feature, layer) {
+                     return feature.properties.Q31 =="Development";
                                  }
                            }).addTo(development);
                         });
-              $.getJSON(url1, function(data) {
+          $.getJSON(url1, function(data) {
                         geojsonlayer= L.geoJson(data, {
                         filter: function(feature, layer) {
                              return feature.properties.Q31 =="Planning";
                           }
                        }).addTo(plan);
                 });
-                $.getJSON(url1, function(data) {
+         $.getJSON(url1, function(data) {
                           geojsonlayer= L.geoJson(data, {
                           filter: function(feature, layer) {
                                return feature.properties.Q31 =="Acquisition";
                             }
                          }).addTo(aqu);
                   });
-                  $.getJSON(url1, function(data) {
+          $.getJSON(url1, function(data) {
                             geojsonlayer= L.geoJson(data, {
                             filter: function(feature, layer) {
                                  return feature.properties.Q31 =="Combination (Acquisition and Development)";
@@ -367,22 +373,24 @@ var masClusGroup = new L.markerClusterGroup().addTo(map);
                            }).addTo(combo);
                     });
 
-  var overlayMaps = {
-    "All": all,
-    "FY 2022": fy,
-    "Development": development,
-    "Aquisition": aqu,
-    "Combination (A&D)": combo,
-    "Planning": plan,
+
+  var overlayMaps  = {
+
 };
 
 var baselayer = {
-
+  "All": all,
+  "FY 2022": fy,
+  "Development": development,
+  "Aquisition": aqu,
+  "Combination (A&D)": combo,
+  "Planning": plan,
 
 
 };
 
- L.control.layers(overlayMaps,baselayer,{collapsed:false,position: 'bottomleft'}).addTo(map);
+
+var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position: 'bottomleft'}).addTo(map);
 
 
     var sidebar = L.control.sidebar('sidebar', {
@@ -392,10 +400,10 @@ var baselayer = {
 
     map.addControl(sidebar);
 
-
 // This is for all points
     all.on('click', function(e) {
       sidebar.toggle();
+
       var pro = document.getElementById('pro');
       pro.innerHTML = e.layer.feature.properties.Q5_1;
 
@@ -426,7 +434,7 @@ var baselayer = {
       } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
     });
 
-//This is for FY 2022
+// This is for FY 2022
     fy.on('click', function(e) {
       sidebar.toggle();
       var pro = document.getElementById('pro');
@@ -458,6 +466,135 @@ var baselayer = {
         rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
       } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
     });
+    // This is develpment
+        development.on('click', function(e) {
+          sidebar.toggle();
+          var pro = document.getElementById('pro');
+          pro.innerHTML = e.layer.feature.properties.Q5_1;
+
+          var fy22 = document.getElementById('fy22');
+          if (e.layer.feature.properties.Q35 == "FY 22") {
+            fy22.innerHTML = "Financal Year 2022"
+          } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+            fy22.innerHTML = "Financal Year 2023 & Beyond"
+          } else(fy22.innerHTML = "")
+
+          var name = document.getElementById('org');
+          if (e.layer.feature.properties.Q1_1 == "NA") {
+            name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
+          } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+
+          var des = document.getElementById('description');
+          des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+
+          var cos = document.getElementById('cos');
+          cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+
+          var type = document.getElementById('type');
+          type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+
+          var rec = document.getElementById('rec');
+          if (e.layer.feature.properties.Q15_14_TEXT == null) {
+            rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+          } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
+        });
+        // This is develpment
+            aqu.on('click', function(e) {
+              sidebar.toggle();
+              var pro = document.getElementById('pro');
+              pro.innerHTML = e.layer.feature.properties.Q5_1;
+
+              var fy22 = document.getElementById('fy22');
+              if (e.layer.feature.properties.Q35 == "FY 22") {
+                fy22.innerHTML = "Financal Year 2022"
+              } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+                fy22.innerHTML = "Financal Year 2023 & Beyond"
+              } else(fy22.innerHTML = "")
+
+              var name = document.getElementById('org');
+              if (e.layer.feature.properties.Q1_1 == "NA") {
+                name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
+              } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+
+              var des = document.getElementById('description');
+              des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+
+              var cos = document.getElementById('cos');
+              cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+
+              var type = document.getElementById('type');
+              type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+
+              var rec = document.getElementById('rec');
+              if (e.layer.feature.properties.Q15_14_TEXT == null) {
+                rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+              } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
+            });
+            // This is develpment
+                combo.on('click', function(e) {
+                  sidebar.toggle();
+                  var pro = document.getElementById('pro');
+                  pro.innerHTML = e.layer.feature.properties.Q5_1;
+
+                  var fy22 = document.getElementById('fy22');
+                  if (e.layer.feature.properties.Q35 == "FY 22") {
+                    fy22.innerHTML = "Financal Year 2022"
+                  } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+                    fy22.innerHTML = "Financal Year 2023 & Beyond"
+                  } else(fy22.innerHTML = "")
+
+                  var name = document.getElementById('org');
+                  if (e.layer.feature.properties.Q1_1 == "NA") {
+                    name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
+                  } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+
+                  var des = document.getElementById('description');
+                  des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+
+                  var cos = document.getElementById('cos');
+                  cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+
+                  var type = document.getElementById('type');
+                  type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+
+                  var rec = document.getElementById('rec');
+                  if (e.layer.feature.properties.Q15_14_TEXT == null) {
+                    rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+                  } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
+                });
+                // This is develpment
+                    plan.on('click', function(e) {
+                      sidebar.toggle();
+                      var pro = document.getElementById('pro');
+                      pro.innerHTML = e.layer.feature.properties.Q5_1;
+
+                      var fy22 = document.getElementById('fy22');
+                      if (e.layer.feature.properties.Q35 == "FY 22") {
+                        fy22.innerHTML = "Financal Year 2022"
+                      } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+                        fy22.innerHTML = "Financal Year 2023 & Beyond"
+                      } else(fy22.innerHTML = "")
+
+                      var name = document.getElementById('org');
+                      if (e.layer.feature.properties.Q1_1 == "NA") {
+                        name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
+                      } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+
+                      var des = document.getElementById('description');
+                      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+
+                      var cos = document.getElementById('cos');
+                      cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+
+                      var type = document.getElementById('type');
+                      type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+
+                      var rec = document.getElementById('rec');
+                      if (e.layer.feature.properties.Q15_14_TEXT == null) {
+                        rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+                      } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
+                    });
+
 
 
     map.once('focus', function() {
