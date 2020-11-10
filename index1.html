@@ -715,12 +715,15 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
         var i;
         for (i = 0; i < estcost.length; i++) {
           estcost[i].Respondents = estcost[i]['value'] / df.length;
-
         }
-        let unknown = estcost.pop();
-        let na = estcost.pop();
 
-        console.log(estcost)
+        for (i = 0; i < estcost.length; i++) {
+        if(estcost[i].key=="Unknown"){let unknown = estcost.pop()};
+        }
+        for (i = 0; i < estcost.length; i++) {
+          if(estcost[i].key=="NA"){let na = estcost.pop()};
+        }
+
 
           var estcost1 = d3.nest()
             .key(function(d) { return d.Q13;})
@@ -761,11 +764,17 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
             estcost1.sort(function(a, b) {
               return d3.descending(a.ranges, b.ranges);
             });
+            console.log(estcost1)
 
-            var i;
-            for (i = 0; i < 7; i++) {
-                estcost[i].yesmatch = estcost1[i].values[1].value/estcost[i]['value'];
+            for (i = 0; i < estcost1.length; i++) {
+              for (j = 0; j < estcost1[i].values.length; j++) {
+              if (estcost1[i].values[j].key=="true"){
+                estcost[i].yesmatch = estcost1[i].values[j].value/estcost[i]['value'];
+              }
+              // else (estcost1[i].values[j].key=="false")
+              // {return null;}
             }
+          }
 
 
 
