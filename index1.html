@@ -7,14 +7,15 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/leaflet.css" />
   <link rel="stylesheet" href="css/L.Control.Sidebar.css" />
   <link rel="stylesheet" href="css/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Cinzel:wght@500&family=Commissioner:wght@300&family=Josefin+Sans:wght@500&family=Raleway:wght@300&display=swap" rel="stylesheet">
 
   <!-- JavaScript -->
-  <script src="js/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -23,7 +24,7 @@
   <script src="js/c3.min.js"></script>
   <script src="js/chroma.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-
+  <script src="js/leaflet.featuregroup.subgroup.js"></script>
 </head>
 
 <body>
@@ -170,6 +171,43 @@
 
       <div class="row">
         <div class="col-md">
+          <div id="matchchart"></div>
+        </div>
+        <div class="col-lg">
+          <div class="center">
+            <h3>The percentage of projects with a secured private match.</h3>
+          </div>
+          <p>This can be interpreted as precent of respondents.<p>
+              <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+      </div>
+      <br>
+      <hr size="6" width="50%" align="center" color="Black">
+      <br>
+
+      <div class="row">
+        <div class="col-lg">
+          <div class="center">
+            <h3>Application Standing</h3>
+          </div>
+          <p>The proportion of applications whom have submitted or are new concepts</p>
+          <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+            eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="col-md">
+          <div id="conceptchart"></div>
+        </div>
+      </div>
+      <br>
+      <hr size="6" width="50%" align="center" color="Black">
+      <br>
+
+
+      <div class="row">
+        <div class="col-md">
           <div id="chart"></div>
         </div>
         <div class="col-lg">
@@ -223,28 +261,8 @@
       <br>
 
 
-      <div class="row">
-        <div class="col-lg">
-          <div class="center">
-            <h3>Application Standing</h3>
-          </div>
-          <p>The proportion of applications whom have submitted or are new concepts</p>
-          <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-            eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        </div>
-        <div class="col-md">
-          <div id="conceptchart"></div>
-        </div>
-      </div>
-      <br>
-      <hr size="6" width="50%" align="center" color="Black">
-      <br>
 
       <div class="row">
-        <div class="col-md">
-          <div id="demochart"></div>
-        </div>
         <div class="col-lg">
           <div class="center">
             <h3>Demographics </h3>
@@ -252,6 +270,9 @@
           <p class="lorem">Most commonly mentioned communities the project would serve..... <br><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
             voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
             invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="col-md">
+          <div id="demochart"></div>
         </div>
       </div>
       <br>
@@ -299,21 +320,98 @@
       attribution: 'Made By <a href="https://github.com/loweas">loweas</a>',
     }).addTo(map);
 
-    var markers = L.markerClusterGroup({
-      disableClusteringAtZoom: 9
-    });
+
 
     var tests = null;
     // Get GeoJSON and put on it on the map when it loads
-    tests = L.geoJson.ajax("assets/lwcf/lwcf.geojson", {
 
-    })
 
-    tests.on('data:loaded', function() {
-      markers.addLayer(tests);
-      map.addLayer(markers);
 
-    });
+    var masClusGroup = new L.markerClusterGroup({  disableClusteringAtZoom: 9}).addTo(map);
+
+    // var all = L.markerClusterGroup().addTo(map);
+    //
+    // var fy = L.featureGroup.subGroup(all).addTo(map);
+    // development = L.featureGroup.subGroup(all).addTo(map);
+    // plan = L.featureGroup.subGroup(all).addTo(map);
+    // combo = L.featureGroup.subGroup(all).addTo(map);
+    // aqu = L.featureGroup.subGroup(all).addTo(map);
+    //
+
+
+    var all = L.featureGroup.subGroup(masClusGroup).addTo(map);
+    fy = L.featureGroup.subGroup(masClusGroup);
+    development = L.featureGroup.subGroup(masClusGroup);
+    plan = L.featureGroup.subGroup(masClusGroup);
+    combo = L.featureGroup.subGroup(masClusGroup);
+    aqu = L.featureGroup.subGroup(masClusGroup);
+
+
+
+    var url1 = "assets/lwcf/lwcf.geojson";
+
+    $.getJSON(url1, function(data) {
+            geojsonlayer= L.geoJson(data, {
+              // filter: function(feature, layer) {
+              //     return feature.properties.Q35 !="FY 22";
+              // }
+            }).addTo(all);
+         });
+    $.getJSON(url1, function(data) {
+                 geojsonlayer= L.geoJson(data, {
+                       filter: function(feature, layer) {
+                           return feature.properties.Q35 =="FY 22";
+                       }
+                 }).addTo(fy);
+              });
+    $.getJSON(url1, function(data) {
+          geojsonlayer= L.geoJson(data, {
+                   filter: function(feature, layer) {
+                     return feature.properties.Q31 =="Development";
+                                 }
+                           }).addTo(development);
+                        });
+          $.getJSON(url1, function(data) {
+                        geojsonlayer= L.geoJson(data, {
+                        filter: function(feature, layer) {
+                             return feature.properties.Q31 =="Planning";
+                          }
+                       }).addTo(plan);
+                });
+         $.getJSON(url1, function(data) {
+                          geojsonlayer= L.geoJson(data, {
+                          filter: function(feature, layer) {
+                               return feature.properties.Q31 =="Acquisition";
+                            }
+                         }).addTo(aqu);
+                  });
+          $.getJSON(url1, function(data) {
+                            geojsonlayer= L.geoJson(data, {
+                            filter: function(feature, layer) {
+                                 return feature.properties.Q31 =="Combination (Acquisition and Development)";
+                              }
+                           }).addTo(combo);
+                    });
+
+
+  var overlayMaps  = {
+
+};
+
+var baselayer = {
+  "All": all,
+  "FY 2022": fy,
+  "Development": development,
+  "Aquisition": aqu,
+  "Combination (A&D)": combo,
+  "Planning": plan,
+
+
+};
+
+
+var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position: 'bottomleft'}).addTo(map);
+
 
     var sidebar = L.control.sidebar('sidebar', {
       closeButton: true,
@@ -322,8 +420,42 @@
 
     map.addControl(sidebar);
 
-    tests.on('click', function(e) {
+// This is for all points
+    all.on('click', function(e) {
+      sidebar.toggle();
 
+      var pro = document.getElementById('pro');
+      pro.innerHTML = e.layer.feature.properties.Q5_1;
+
+      var fy22 = document.getElementById('fy22');
+      if (e.layer.feature.properties.Q35 == "FY 22") {
+        fy22.innerHTML = "Financal Year 2022"
+      } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+        fy22.innerHTML = "Financal Year 2023 & Beyond"
+      } else(fy22.innerHTML = "")
+
+      var name = document.getElementById('org');
+      if (e.layer.feature.properties.Q1_1 == "NA") {
+        name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
+      } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+
+      var des = document.getElementById('description');
+      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+
+      var cos = document.getElementById('cos');
+      cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+
+      var type = document.getElementById('type');
+      type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+
+      var rec = document.getElementById('rec');
+      if (e.layer.feature.properties.Q15_14_TEXT == null) {
+        rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+      } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
+    });
+
+// This is for FY 2022
+    fy.on('click', function(e) {
       sidebar.toggle();
       var pro = document.getElementById('pro');
       pro.innerHTML = e.layer.feature.properties.Q5_1;
@@ -353,8 +485,137 @@
       if (e.layer.feature.properties.Q15_14_TEXT == null) {
         rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
       } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
-
     });
+    // This is develpment
+        development.on('click', function(e) {
+          sidebar.toggle();
+          var pro = document.getElementById('pro');
+          pro.innerHTML = e.layer.feature.properties.Q5_1;
+
+          var fy22 = document.getElementById('fy22');
+          if (e.layer.feature.properties.Q35 == "FY 22") {
+            fy22.innerHTML = "Financal Year 2022"
+          } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+            fy22.innerHTML = "Financal Year 2023 & Beyond"
+          } else(fy22.innerHTML = "")
+
+          var name = document.getElementById('org');
+          if (e.layer.feature.properties.Q1_1 == "NA") {
+            name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
+          } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+
+          var des = document.getElementById('description');
+          des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+
+          var cos = document.getElementById('cos');
+          cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+
+          var type = document.getElementById('type');
+          type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+
+          var rec = document.getElementById('rec');
+          if (e.layer.feature.properties.Q15_14_TEXT == null) {
+            rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+          } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
+        });
+        // This is develpment
+            aqu.on('click', function(e) {
+              sidebar.toggle();
+              var pro = document.getElementById('pro');
+              pro.innerHTML = e.layer.feature.properties.Q5_1;
+
+              var fy22 = document.getElementById('fy22');
+              if (e.layer.feature.properties.Q35 == "FY 22") {
+                fy22.innerHTML = "Financal Year 2022"
+              } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+                fy22.innerHTML = "Financal Year 2023 & Beyond"
+              } else(fy22.innerHTML = "")
+
+              var name = document.getElementById('org');
+              if (e.layer.feature.properties.Q1_1 == "NA") {
+                name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
+              } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+
+              var des = document.getElementById('description');
+              des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+
+              var cos = document.getElementById('cos');
+              cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+
+              var type = document.getElementById('type');
+              type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+
+              var rec = document.getElementById('rec');
+              if (e.layer.feature.properties.Q15_14_TEXT == null) {
+                rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+              } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
+            });
+            // This is develpment
+                combo.on('click', function(e) {
+                  sidebar.toggle();
+                  var pro = document.getElementById('pro');
+                  pro.innerHTML = e.layer.feature.properties.Q5_1;
+
+                  var fy22 = document.getElementById('fy22');
+                  if (e.layer.feature.properties.Q35 == "FY 22") {
+                    fy22.innerHTML = "Financal Year 2022"
+                  } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+                    fy22.innerHTML = "Financal Year 2023 & Beyond"
+                  } else(fy22.innerHTML = "")
+
+                  var name = document.getElementById('org');
+                  if (e.layer.feature.properties.Q1_1 == "NA") {
+                    name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
+                  } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+
+                  var des = document.getElementById('description');
+                  des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+
+                  var cos = document.getElementById('cos');
+                  cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+
+                  var type = document.getElementById('type');
+                  type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+
+                  var rec = document.getElementById('rec');
+                  if (e.layer.feature.properties.Q15_14_TEXT == null) {
+                    rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+                  } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
+                });
+                // This is develpment
+                    plan.on('click', function(e) {
+                      sidebar.toggle();
+                      var pro = document.getElementById('pro');
+                      pro.innerHTML = e.layer.feature.properties.Q5_1;
+
+                      var fy22 = document.getElementById('fy22');
+                      if (e.layer.feature.properties.Q35 == "FY 22") {
+                        fy22.innerHTML = "Financal Year 2022"
+                      } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+                        fy22.innerHTML = "Financal Year 2023 & Beyond"
+                      } else(fy22.innerHTML = "")
+
+                      var name = document.getElementById('org');
+                      if (e.layer.feature.properties.Q1_1 == "NA") {
+                        name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
+                      } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+
+                      var des = document.getElementById('description');
+                      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+
+                      var cos = document.getElementById('cos');
+                      cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+
+                      var type = document.getElementById('type');
+                      type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+
+                      var rec = document.getElementById('rec');
+                      if (e.layer.feature.properties.Q15_14_TEXT == null) {
+                        rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+                      } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
+                    });
+
+
 
     map.once('focus', function() {
       map.scrollWheelZoom.enable();
@@ -409,11 +670,10 @@
         }
 
 
-
         // Estimated Cost Range
         var estcost = d3.nest()
           .key(function(d) {
-            return d.Q13;
+            return d.Q13 ;
           })
           .rollup(function(v) {
             return v.length;
@@ -455,7 +715,60 @@
         var i;
         for (i = 0; i < estcost.length; i++) {
           estcost[i].Respondents = estcost[i]['value'] / df.length;
+
         }
+        let unknown = estcost.pop();
+        let na = estcost.pop();
+
+        console.log(estcost)
+
+          var estcost1 = d3.nest()
+            .key(function(d) { return d.Q13;})
+            .key(function(d) { return d.Q21 =="Yes"; })
+            .rollup(function(v) { return v.length; })
+            .entries(df);
+
+
+            estcost1.forEach(function(e) {
+              if (e.key == "$1,750,000+") {
+                e["ranges"] = 8
+              }
+              if (e.key == "$1,500,000 - $1,750,000") {
+                e["ranges"] = 7
+              }
+              if (e.key == "$1,250,001 - $1,500,000") {
+                e["ranges"] = 6
+              }
+              if (e.key == "$1,000,001 - $1,250,000") {
+                e["ranges"] = 5
+              }
+              if (e.key == "$750,0001 - $1,000,000") {
+                e["ranges"] = 4
+              }
+              if (e.key == "$500,001 - $750,000") {
+                e["ranges"] = 3
+              }
+              if (e.key == "$250,001 - $500,000") {
+                e["ranges"] = 2
+              }
+              if (e.key == "$0 - $250,000") {
+                e["ranges"] = 1
+              }
+              if (e.key == "Unknown") {
+                e["ranges"] = 0
+              }
+            });
+            estcost1.sort(function(a, b) {
+              return d3.descending(a.ranges, b.ranges);
+            });
+
+            var i;
+            for (i = 0; i < 7; i++) {
+                estcost[i].yesmatch = estcost1[i].values[1].value/estcost[i]['value'];
+            }
+
+
+
 
         // 7. Project Type
         var protypeCount = d3.nest()
@@ -472,6 +785,22 @@
         protypeCount.forEach(function(e) {
           sites.push(e.key);
           protypedata[e.key] = e.value;
+        })
+        // 16. Project matched funds
+        var matchCount = d3.nest()
+          .key(function(d) {
+            return d.Q21;
+          })
+          .rollup(function(v) {
+            return v.length;
+          })
+          .entries(df);
+
+        var matchdata = {};
+        var matchsites = [];
+        matchCount.forEach(function(e) {
+          matchsites.push(e.key);
+          matchdata[e.key] = e.value;
         })
 
         // 8. How would you best categorize the project?
@@ -640,18 +969,27 @@
             json: estcost,
             keys: {
               x: 'key',
-              value: ['Respondents'],
+              value: ['Respondents', 'yesmatch'],
+            },
+            names: {
+              Respondents: '% Respondents',
+              yesmatch: '% of those Respondents with a sercured private match'
             },
             type: 'bar',
-            color: function(color, d) {
-              return color8[d.index];
-            },
+            order: 'asc',
+            // color: function(color, d) {
+            //   return color8[d.index];
+            // },
             labels: {
               format: function(v, id, i, j) {
-                var formatPercent = d3.format(",.2%");
+                var formatPercent = d3.format(",.0%");
                 return formatPercent(v);
               }
             },
+
+          },
+          color: {
+            pattern: [color20[0],color20[8], color20[10], color20[11],color20[13],color20[17],color20[19]]
           },
           axis: {
             x: {
@@ -659,21 +997,23 @@
                 text: 'Estimated Cost Range',
                 position: 'outer-center',
               },
+
               type: 'category',
               // categories:  [ "$1,750,000+","$1,500,000 - $1,750,000","$1,250,001 - $1,500,000",'$1,000,001-$1,250,000',"$750,0001 - $1,000,000","$500,001 - $750,000","$250,001 - $500,000","$0 - $250,000",'Unknown'],
               tick: {
                 centered: true
-              }
+              },
+
             },
             y: {
               tick: {
                 format: d3.format('.0%')
               },
               label: {
-                text: '% of total Respondents',
+                text: '% of total Respondents (Unknowns Dropped)',
                 position: 'outer-middle'
               },
-              max: .3,
+              max: 1,
               min: 0,
               padding: {
                 top: 0,
@@ -683,8 +1023,11 @@
             rotated: true
           },
           legend: {
-            show: false
+            show: true
           },
+          // tooltips: {
+          //   reversed: false,
+          // },
           bindto: "#cost-chart"
         });
 
@@ -727,7 +1070,24 @@
           },
           bindto: "#conceptchart"
         });
-
+        var matchchart = c3.generate({
+          data: {
+            json: [matchdata],
+            keys: {
+              value: matchsites,
+            },
+            type: 'pie'
+          },
+          axis: {
+            x: {
+              type: 'category'
+            }
+          },
+          color: {
+            pattern: [color7[0], color7[2], color7[3], color7[4], 'grey']
+          },
+          bindto: "#matchchart"
+        });
 
         var catchart = c3.generate({
           data: {
@@ -809,6 +1169,7 @@
 
           bindto: "#barchart"
         });
+
 
 
         var recchart = c3.generate({

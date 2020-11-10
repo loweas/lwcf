@@ -171,6 +171,43 @@
 
       <div class="row">
         <div class="col-md">
+          <div id="matchchart"></div>
+        </div>
+        <div class="col-lg">
+          <div class="center">
+            <h3>The percentage of projects with a secured private match.</h3>
+          </div>
+          <p>This can be interpreted as precent of respondents.<p>
+              <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+      </div>
+      <br>
+      <hr size="6" width="50%" align="center" color="Black">
+      <br>
+
+      <div class="row">
+        <div class="col-lg">
+          <div class="center">
+            <h3>Application Standing</h3>
+          </div>
+          <p>The proportion of applications whom have submitted or are new concepts</p>
+          <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+            eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="col-md">
+          <div id="conceptchart"></div>
+        </div>
+      </div>
+      <br>
+      <hr size="6" width="50%" align="center" color="Black">
+      <br>
+
+
+      <div class="row">
+        <div class="col-md">
           <div id="chart"></div>
         </div>
         <div class="col-lg">
@@ -224,28 +261,8 @@
       <br>
 
 
-      <div class="row">
-        <div class="col-lg">
-          <div class="center">
-            <h3>Application Standing</h3>
-          </div>
-          <p>The proportion of applications whom have submitted or are new concepts</p>
-          <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-            eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        </div>
-        <div class="col-md">
-          <div id="conceptchart"></div>
-        </div>
-      </div>
-      <br>
-      <hr size="6" width="50%" align="center" color="Black">
-      <br>
 
       <div class="row">
-        <div class="col-md">
-          <div id="demochart"></div>
-        </div>
         <div class="col-lg">
           <div class="center">
             <h3>Demographics </h3>
@@ -253,6 +270,9 @@
           <p class="lorem">Most commonly mentioned communities the project would serve..... <br><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
             voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
             invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="col-md">
+          <div id="demochart"></div>
         </div>
       </div>
       <br>
@@ -650,7 +670,6 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
         }
 
 
-
         // Estimated Cost Range
         var estcost = d3.nest()
           .key(function(d) {
@@ -660,6 +679,8 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
             return v.length;
           })
           .entries(df);
+
+
 
         estcost.forEach(function(e) {
           if (e.key == "$1,750,000+") {
@@ -698,6 +719,51 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
           estcost[i].Respondents = estcost[i]['value'] / df.length;
         }
 
+          // var estcost1 = d3.nest()
+          //   .key(function(d) { return d.Q13;})
+          //   .key(function(d) { return d.Q21; })
+          //   .rollup(function(v) { return v.length; })
+          //   .entries(df);
+          //   estcost1.forEach(function(e) {
+          //     if (e.key == "$1,750,000+") {
+          //       e["ranges"] = 8
+          //     }
+          //     if (e.key == "$1,500,000 - $1,750,000") {
+          //       e["ranges"] = 7
+          //     }
+          //     if (e.key == "$1,250,001 - $1,500,000") {
+          //       e["ranges"] = 6
+          //     }
+          //     if (e.key == "$1,000,001 - $1,250,000") {
+          //       e["ranges"] = 5
+          //     }
+          //     if (e.key == "$750,0001 - $1,000,000") {
+          //       e["ranges"] = 4
+          //     }
+          //     if (e.key == "$500,001 - $750,000") {
+          //       e["ranges"] = 3
+          //     }
+          //     if (e.key == "$250,001 - $500,000") {
+          //       e["ranges"] = 2
+          //     }
+          //     if (e.key == "$0 - $250,000") {
+          //       e["ranges"] = 1
+          //     }
+          //     if (e.key == "Unknown") {
+          //       e["ranges"] = 0
+          //     }
+          //   });
+          //   estcost1.sort(function(a, b) {
+          //     return d3.descending(a.ranges, b.ranges);
+          //   });
+          //               console.log(estcost1)
+          //   var i;
+          //   for (i = 0; i < estcost.length; i++) {
+          //     estcost[i].yesmatch = estcost1[i].values[1].value/estcost[i]['value'];
+          //   }
+
+
+
         // 7. Project Type
         var protypeCount = d3.nest()
           .key(function(d) {
@@ -713,6 +779,22 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
         protypeCount.forEach(function(e) {
           sites.push(e.key);
           protypedata[e.key] = e.value;
+        })
+        // 16. Project matched funds
+        var matchCount = d3.nest()
+          .key(function(d) {
+            return d.Q21;
+          })
+          .rollup(function(v) {
+            return v.length;
+          })
+          .entries(df);
+
+        var matchdata = {};
+        var matchsites = [];
+        matchCount.forEach(function(e) {
+          matchsites.push(e.key);
+          matchdata[e.key] = e.value;
         })
 
         // 8. How would you best categorize the project?
@@ -889,7 +971,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
             },
             labels: {
               format: function(v, id, i, j) {
-                var formatPercent = d3.format(",.2%");
+                var formatPercent = d3.format(",.0%");
                 return formatPercent(v);
               }
             },
@@ -914,7 +996,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
                 text: '% of total Respondents',
                 position: 'outer-middle'
               },
-              max: .3,
+              max: .4,
               min: 0,
               padding: {
                 top: 0,
@@ -968,7 +1050,24 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
           },
           bindto: "#conceptchart"
         });
-
+        var matchchart = c3.generate({
+          data: {
+            json: [matchdata],
+            keys: {
+              value: matchsites,
+            },
+            type: 'pie'
+          },
+          axis: {
+            x: {
+              type: 'category'
+            }
+          },
+          color: {
+            pattern: [color7[0], color7[2], color7[3], color7[4], 'grey']
+          },
+          bindto: "#matchchart"
+        });
 
         var catchart = c3.generate({
           data: {
@@ -1050,6 +1149,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
 
           bindto: "#barchart"
         });
+
 
 
         var recchart = c3.generate({
