@@ -35,6 +35,27 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.menu-ui {
+ background:#0e5571;
+ color:#fff !important;
+ position:absolute;
+ top:10px;right:10px;
+ z-index:1;
+ border-radius:3px;
+ width:150px;
+ border:2px solid #fff;
+ font-size:12px;
+ padding:10px 5px;
+ }
+
+ .menu-ui h4{color:#fff;}
+
+ .menu-ui ul, .menu-ui ul li{
+   list-style:none;
+   padding-left:0;
+   margin:0;
+ }
+
 #rcorners {
   border-radius: 25px;
   border: 2px solid #28a745;
@@ -52,6 +73,7 @@
 padding-top: 10rem;
 margin-left: 1rem;
 margin-right: 1rem;
+
 }
 .dataanalysis-section{
 padding-top: 5rem;
@@ -60,7 +82,7 @@ margin-right: 1rem;
 }
 
 .mapdata-section{
-padding-top: 10rem;
+padding-top: 5rem;
 }
 
 .about-section{

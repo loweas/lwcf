@@ -1,6 +1,6 @@
 library(readr)
 ## The file name needs to be changed
-LandWCF <- read_csv("~/Downloads/LandWCF_November 4, 2020_10.05.csv")
+LandWCF <- read_csv("~/Downloads/LandWCF_November 8, 2020_22.07.csv")
 ## Remove Columns and Identifiable Rows
 test <- LandWCF[-c(1:2),] 
 test <- test[-c(1:17)] 
@@ -51,5 +51,25 @@ library("geojsonio", lib.loc="/Library/Frameworks/R.framework/Versions/3.5/Resou
 geojson_write(tester, file = "lwcf.geojson")
 
 
+library("tm")
+library("SnowballC")
+library("RColorBrewer")
+library("wordcloud")
 
+texts=tester$Q5_2
+docs <- Corpus(VectorSource(texts))
+
+docs <- docs %>%
+  tm_map(removeNumbers) %>%
+  tm_map(removePunctuation) %>%
+  tm_map(stripWhitespace)
+docs <- tm_map(docs, content_transformer(tolower))
+docs <- tm_map(docs, removeWords, stopwords("english"))
+dtm <- TermDocumentMatrix(docs) 
+matrix <- as.matrix(dtm) 
+words <- sort(rowSums(matrix),decreasing=TRUE) 
+df <- data.frame(word = names(words),freq=words)
+df<- df[-c(1),] 
+words <- df %>% count(word, sort=TRUE)set.seed(1234) # for reproducibility 
+wordcloud(words = df$word, freq = df$freq, min.freq = 1,           max.words=100, random.order=FALSE, rot.per=0.35, scale=c(3.5,0.25),         colors = c('#5c8e53', '#2a4c7e', '#8E535C', '#784a6f','#008072'))
 

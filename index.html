@@ -327,7 +327,7 @@
 
 
 
-    var masClusGroup = new L.markerClusterGroup({  disableClusteringAtZoom: 9}).addTo(map);
+    var masClusGroup = new L.markerClusterGroup({  disableClusteringAtZoom: 9,maxClusterRadius: 50}).addTo(map);
 
     // var all = L.markerClusterGroup().addTo(map);
     //
@@ -402,8 +402,8 @@ var baselayer = {
   "All": all,
   "FY 2022": fy,
   "Development": development,
-  "Aquisition": aqu,
-  "Combination (A&D)": combo,
+  "Acquisition": aqu,
+  "Combination (D&A)": combo,
   "Planning": plan,
 
 
@@ -719,48 +719,48 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
           estcost[i].Respondents = estcost[i]['value'] / df.length;
         }
 
-          // var estcost1 = d3.nest()
-          //   .key(function(d) { return d.Q13;})
-          //   .key(function(d) { return d.Q21; })
-          //   .rollup(function(v) { return v.length; })
-          //   .entries(df);
-          //   estcost1.forEach(function(e) {
-          //     if (e.key == "$1,750,000+") {
-          //       e["ranges"] = 8
-          //     }
-          //     if (e.key == "$1,500,000 - $1,750,000") {
-          //       e["ranges"] = 7
-          //     }
-          //     if (e.key == "$1,250,001 - $1,500,000") {
-          //       e["ranges"] = 6
-          //     }
-          //     if (e.key == "$1,000,001 - $1,250,000") {
-          //       e["ranges"] = 5
-          //     }
-          //     if (e.key == "$750,0001 - $1,000,000") {
-          //       e["ranges"] = 4
-          //     }
-          //     if (e.key == "$500,001 - $750,000") {
-          //       e["ranges"] = 3
-          //     }
-          //     if (e.key == "$250,001 - $500,000") {
-          //       e["ranges"] = 2
-          //     }
-          //     if (e.key == "$0 - $250,000") {
-          //       e["ranges"] = 1
-          //     }
-          //     if (e.key == "Unknown") {
-          //       e["ranges"] = 0
-          //     }
-          //   });
-          //   estcost1.sort(function(a, b) {
-          //     return d3.descending(a.ranges, b.ranges);
-          //   });
-          //               console.log(estcost1)
-          //   var i;
-          //   for (i = 0; i < estcost.length; i++) {
-          //     estcost[i].yesmatch = estcost1[i].values[1].value/estcost[i]['value'];
-          //   }
+        // var estcost1 = d3.nest()
+        //   .key(function(d) { return d.Q13;})
+        //   .key(function(d) { return d.Q21; })
+        //   .rollup(function(v) { return v.length; })
+        //   .entries(df);
+        //   estcost1.forEach(function(e) {
+        //     if (e.key == "$1,750,000+") {
+        //       e["ranges"] = 8
+        //     }
+        //     if (e.key == "$1,500,000 - $1,750,000") {
+        //       e["ranges"] = 7
+        //     }
+        //     if (e.key == "$1,250,001 - $1,500,000") {
+        //       e["ranges"] = 6
+        //     }
+        //     if (e.key == "$1,000,001 - $1,250,000") {
+        //       e["ranges"] = 5
+        //     }
+        //     if (e.key == "$750,0001 - $1,000,000") {
+        //       e["ranges"] = 4
+        //     }
+        //     if (e.key == "$500,001 - $750,000") {
+        //       e["ranges"] = 3
+        //     }
+        //     if (e.key == "$250,001 - $500,000") {
+        //       e["ranges"] = 2
+        //     }
+        //     if (e.key == "$0 - $250,000") {
+        //       e["ranges"] = 1
+        //     }
+        //     if (e.key == "Unknown") {
+        //       e["ranges"] = 0
+        //     }
+        //   });
+        //   estcost1.sort(function(a, b) {
+        //     return d3.descending(a.ranges, b.ranges);
+        //   });
+        //               console.log(estcost1)
+        //   var i;
+        //   for (i = 0; i < estcost.length; i++) {
+        //     estcost[i].yesmatch = estcost1[i].values[1].value/estcost[i]['value'];
+        //   }
 
 
 
@@ -993,7 +993,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
                 format: d3.format('.0%')
               },
               label: {
-                text: '% of total Respondents',
+                text: '% of total Respondents (n=' + df.length + ")",
                 position: 'outer-middle'
               },
               max: .4,
@@ -1135,7 +1135,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
                 bottom: 0
               },
               label: {
-                text: 'Total Resondents (n=' + df.length + ")",
+                text: 'Total Respondents (n=' + df.length + ")",
                 position: 'outer-middle',
 
               },
@@ -1194,7 +1194,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
                 bottom: 0
               },
               label: {
-                text: 'Total Resondents (n=' + df.length + ")",
+                text: 'Total Respondents (n=' + df.length + ")",
                 position: 'outer-middle',
 
               },
@@ -1256,7 +1256,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
                 bottom: 0
               },
               label: {
-                text: 'Total Resondents (n=' + df.length + ")",
+                text: 'Total Respondents (n=' + df.length + ")",
                 position: 'outer-middle',
 
               },

@@ -17,7 +17,7 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <script src="js/leaflet.markercluster.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="js/L.Control.Sidebar.js"></script>
   <script src="js/d3.js"></script>
@@ -25,6 +25,7 @@
   <script src="js/chroma.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
   <script src="js/leaflet.featuregroup.subgroup.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier-Leaflet/0.2.6/oms.min.js"></script>
 </head>
 
 <body>
@@ -325,73 +326,169 @@
     var tests = null;
     // Get GeoJSON and put on it on the map when it loads
 
-
-
-    var masClusGroup = new L.markerClusterGroup({  disableClusteringAtZoom: 9}).addTo(map);
-
-    // var all = L.markerClusterGroup().addTo(map);
-    //
-    // var fy = L.featureGroup.subGroup(all).addTo(map);
-    // development = L.featureGroup.subGroup(all).addTo(map);
-    // plan = L.featureGroup.subGroup(all).addTo(map);
-    // combo = L.featureGroup.subGroup(all).addTo(map);
-    // aqu = L.featureGroup.subGroup(all).addTo(map);
-    //
-
-
-    var all = L.featureGroup.subGroup(masClusGroup).addTo(map);
-    fy = L.featureGroup.subGroup(masClusGroup);
-    development = L.featureGroup.subGroup(masClusGroup);
-    plan = L.featureGroup.subGroup(masClusGroup);
-    combo = L.featureGroup.subGroup(masClusGroup);
-    aqu = L.featureGroup.subGroup(masClusGroup);
+    // var us= L.geoJson.ajax("assets/us-states.geojson", {}).addTo(map);
 
 
 
-    var url1 = "assets/lwcf/lwcf.geojson";
 
-    $.getJSON(url1, function(data) {
-            geojsonlayer= L.geoJson(data, {
-              // filter: function(feature, layer) {
-              //     return feature.properties.Q35 !="FY 22";
-              // }
-            }).addTo(all);
+  var url1 = "assets/lwcf/lwcf.geojson";
+  var all = L.geoJson.ajax("assets/lwcf/lwcf.geojson", {
+    pointToLayer: function (feature, latlng) {
+    return L.marker(latlng, {
+        });
+   },
+   onEachFeature: function (feature, latlng) {
+    oms.addMarker(latlng);
+}
+
+   }).addTo(map);
+   var fy = L.geoJson.ajax("assets/lwcf/lwcf.geojson", {
+     filter: function(feature, layer) {
+         return feature.properties.Q35 =="FY 22";
+     },
+     pointToLayer: function (feature, latlng) {
+
+     return L.marker(latlng, {
          });
-    $.getJSON(url1, function(data) {
-                 geojsonlayer= L.geoJson(data, {
-                       filter: function(feature, layer) {
-                           return feature.properties.Q35 =="FY 22";
-                       }
-                 }).addTo(fy);
-              });
-    $.getJSON(url1, function(data) {
-          geojsonlayer= L.geoJson(data, {
-                   filter: function(feature, layer) {
-                     return feature.properties.Q31 =="Development";
-                                 }
-                           }).addTo(development);
-                        });
-          $.getJSON(url1, function(data) {
-                        geojsonlayer= L.geoJson(data, {
-                        filter: function(feature, layer) {
-                             return feature.properties.Q31 =="Planning";
-                          }
-                       }).addTo(plan);
-                });
-         $.getJSON(url1, function(data) {
-                          geojsonlayer= L.geoJson(data, {
-                          filter: function(feature, layer) {
-                               return feature.properties.Q31 =="Acquisition";
-                            }
-                         }).addTo(aqu);
-                  });
-          $.getJSON(url1, function(data) {
-                            geojsonlayer= L.geoJson(data, {
-                            filter: function(feature, layer) {
-                                 return feature.properties.Q31 =="Combination (Acquisition and Development)";
-                              }
-                           }).addTo(combo);
-                    });
+    },
+    onEachFeature: function (feature, latlng) {
+     oms.addMarker(latlng);
+ }
+
+    });
+    var development = L.geoJson.ajax("assets/lwcf/lwcf.geojson", {
+      filter: function(feature, layer) {
+                       return feature.properties.Q31 =="Development";
+                                   },
+      pointToLayer: function (feature, latlng) {
+
+      return L.marker(latlng, {
+          });
+     },
+     onEachFeature: function (feature, latlng) {
+      oms.addMarker(latlng);
+  }
+     });
+     var aqu = L.geoJson.ajax("assets/lwcf/lwcf.geojson", {
+       filter: function(feature, layer) {
+                        return feature.properties.Q31 =="Acquisition";
+                                    },
+       pointToLayer: function (feature, latlng) {
+
+       return L.marker(latlng, {
+           });
+      },
+      onEachFeature: function (feature, latlng) {
+       oms.addMarker(latlng);
+   }
+      });
+      var combo = L.geoJson.ajax("assets/lwcf/lwcf.geojson", {
+        filter: function(feature, layer) {
+                         return feature.properties.Q31 =="Combination (Acquisition and Development)";
+                                     },
+        pointToLayer: function (feature, latlng) {
+
+        return L.marker(latlng, {
+            });
+       },
+       onEachFeature: function (feature, latlng) {
+        oms.addMarker(latlng);
+    }
+       });
+       var plan = L.geoJson.ajax("assets/lwcf/lwcf.geojson", {
+         filter: function(feature, layer) {
+                          return feature.properties.Q31 =="Planning";
+                                      },
+         pointToLayer: function (feature, latlng) {
+
+         return L.marker(latlng, {
+             });
+        },
+        onEachFeature: function (feature, latlng) {
+         oms.addMarker(latlng);
+     }
+        });
+   var oms = new OverlappingMarkerSpiderfier(map,{markersWontMove: true, keepSpiderfied: true});
+
+   oms.addListener('click', function(marker) {
+
+   });
+
+
+//     var masClusGroup = new L.markerClusterGroup({ disableClusteringAtZoom:5,
+// zoomToBoundsOnClick: true  }).addTo(map);
+    //
+    // masClusGroup.on( 'mouseover', function ( a ) {
+    // 	if ( map.options.maxZoom == a.layer._zoom ) {
+    // 		a.layer.spiderfy();
+    // 	}
+    // });
+
+
+//
+    // var all = L.marker().addTo(map);
+    //
+    // var fy = L.marker();
+    // development = L.Marker;
+    // plan = L.marker();
+    // combo = L.marker();
+    // aqu = L.marker();
+
+
+
+    // var all = L.featureGroup.subGroup().addTo(map);
+    // fy = L.featureGroup.subGroup(masClusGroup);
+    // development = L.featureGroup.subGroup(masClusGroup);
+    // plan = L.featureGroup.subGroup(masClusGroup);
+    // combo = L.featureGroup.subGroup(masClusGroup);
+    // aqu = L.featureGroup.subGroup(masClusGroup);
+
+
+    //
+    // var url1 = "assets/lwcf/lwcf.geojson";
+    //
+    // $.getJSON(url1, function(data) {
+    //         geojsonlayer= L.geoJson(data, {
+    //           // filter: function(feature, layer) {
+    //           //     return feature.properties.Q35 !="FY 22";
+    //           // }
+    //         }).addTo(map);
+    //      });
+    // $.getJSON(url1, function(data) {
+    //              geojsonlayer= L.geoJson(data, {
+    //                    filter: function(feature, layer) {
+    //                        return feature.properties.Q35 =="FY 22";
+    //                    }
+    //              }).addTo(fy);
+    //           });
+    // $.getJSON(url1, function(data) {
+    //       geojsonlayer= L.geoJson(data, {
+    //                filter: function(feature, layer) {
+    //                  return feature.properties.Q31 =="Development";
+    //                              }
+    //                        }).addTo(development);
+    //                     });
+    //       $.getJSON(url1, function(data) {
+    //                     geojsonlayer= L.geoJson(data, {
+    //                     filter: function(feature, layer) {
+    //                          return feature.properties.Q31 =="Planning";
+    //                       }
+    //                    }).addTo(plan);
+    //             });
+    //      $.getJSON(url1, function(data) {
+    //                       geojsonlayer= L.geoJson(data, {
+    //                       filter: function(feature, layer) {
+    //                            return feature.properties.Q31 =="Acquisition";
+    //                         }
+    //                      }).addTo(aqu);
+    //               });
+    //       $.getJSON(url1, function(data) {
+    //                         geojsonlayer= L.geoJson(data, {
+    //                         filter: function(feature, layer) {
+    //                              return feature.properties.Q31 =="Combination (Acquisition and Development)";
+    //                           }
+    //                        }).addTo(combo);
+    //                 });
 
 
   var overlayMaps  = {
@@ -402,8 +499,8 @@ var baselayer = {
   "All": all,
   "FY 2022": fy,
   "Development": development,
-  "Aquisition": aqu,
-  "Combination (A&D)": combo,
+  "Acquisition": aqu,
+  "Combination (D&A)": combo,
   "Planning": plan,
 
 
@@ -771,8 +868,6 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
               if (estcost1[i].values[j].key=="true"){
                 estcost[i].yesmatch = estcost1[i].values[j].value/estcost[i]['value'];
               }
-              // else (estcost1[i].values[j].key=="false")
-              // {return null;}
             }
           }
 
@@ -1164,7 +1259,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
                 bottom: 0
               },
               label: {
-                text: 'Total Resondents (n=' + df.length + ")",
+                text: 'Total Respondents (n=' + df.length + ")",
                 position: 'outer-middle',
 
               },
@@ -1223,7 +1318,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
                 bottom: 0
               },
               label: {
-                text: 'Total Resondents (n=' + df.length + ")",
+                text: 'Total Respondents (n=' + df.length + ")",
                 position: 'outer-middle',
 
               },
@@ -1285,7 +1380,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
                 bottom: 0
               },
               label: {
-                text: 'Total Resondents (n=' + df.length + ")",
+                text: 'Total Respondents (n=' + df.length + ")",
                 position: 'outer-middle',
 
               },
