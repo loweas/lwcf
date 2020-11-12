@@ -25,6 +25,7 @@
   <script src="js/chroma.min.js"></script>
   <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
   <script src="js/leaflet.featuregroup.subgroup.js"></script>
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
 </head>
 
 <body>
@@ -45,6 +46,7 @@
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#project">Project</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#mapdata">Map</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#dataanalysis">Data</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#state">State</a></li>
           <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html#about">About</a></li>
         </ul>
       </div>
@@ -279,6 +281,13 @@
       <hr size="6" width="50%" align="center" color="Black">
       <br>
     </section>
+        <section id="state" class="state-section">
+          <center>
+                  <h1> State by State Project Overview</h1>
+                </center>
+          <table>
+      </table>
+        </section>
 
     <section id="about" class="about-section">
       <div class="center">
@@ -306,6 +315,7 @@
   </div>
 
   <script>
+
     var colors = chroma.scale('Set2').mode('lch').colors(9);
     // Map
     var map = L.map("map", {
@@ -327,7 +337,7 @@
 
 
 
-    var masClusGroup = new L.markerClusterGroup({  disableClusteringAtZoom: 9,maxClusterRadius: 50}).addTo(map);
+    var masClusGroup = new L.markerClusterGroup({  disableClusteringAtZoom: 9,maxClusterRadius:30}).addTo(map);
 
     // var all = L.markerClusterGroup().addTo(map);
     //
@@ -637,6 +647,39 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
     Promise.all([
       d3.csv('assets/lwcf/lwcfsurvey.csv', d3.autoType),
     ]).then(function(datasets) {
+
+
+// Makes State By State Table with Project Overview
+
+      var matrix = d3.nest()
+        .key(function(d) {return d.State;  })
+        .key(function(d) {return d.Q5_1;  })
+        .key(function(d) {return d.Q5_2;  })
+        .entries(datasets[0]);
+        var j;
+        var k;
+        console.log(matrix)
+        // Select the table element
+
+       var table =   d3.select("table").selectAll("ul")
+            .data(matrix)
+          .enter().append("ul")
+          .style("font-size", "24px")
+            .text(function(d) { return d.key +" - "+ d.values.length })
+            .selectAll("li")
+              .data(function(d) { return d.values })
+            .enter().append("li")
+              .text(function(d) {
+                    return d.key  })
+                        .style("font-size", "16px")
+                      //   .data(function(d) { return d.values })
+                      // .enter().append("li1")
+                      //   .text(function(d) {
+                      //         return d.Q5_2; })
+                      //             .style("font-size", "16px")
+              table.selectAll('ul').select('li').classed('row-header', true);
+
+// Subdata sets fy 2022 and all
       var df1 = datasets[0];
       var df2 = datasets[0].filter(function(d) {
         return d.Q35 == "FY 22";

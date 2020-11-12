@@ -70,23 +70,29 @@
 }
 
 .project-section{
-padding-top: 10rem;
+padding-top: 7rem;
 margin-left: 1rem;
 margin-right: 1rem;
 
 }
 .dataanalysis-section{
-padding-top: 5rem;
+padding-top: 7rem;
+margin-left: 1rem;
+margin-right: 1rem;
+}
+
+.state-section{
+padding-top: 7rem;
 margin-left: 1rem;
 margin-right: 1rem;
 }
 
 .mapdata-section{
-padding-top: 5rem;
+padding-top: 7rem;
 }
 
 .about-section{
-padding-top: 10rem;
+padding-top: 7rem;
 margin-left: 1rem;
 margin-right: 1rem;
 padding-bottom: 10rem;
@@ -429,6 +435,7 @@ ul,
 dl {
   margin-top: 0;
   margin-bottom: 1rem;
+
 }
 
 ol ol,
