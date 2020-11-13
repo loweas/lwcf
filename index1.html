@@ -1113,7 +1113,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
                 format: d3.format('.0%')
               },
               label: {
-                text: '% of total Respondents (Unknowns Dropped)',
+                text: '% of total Respondents (n=' + df.length + ")",
                 position: 'outer-middle'
               },
               max: 1,
