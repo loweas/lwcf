@@ -62,33 +62,44 @@
          <br>
       </div>
       <div class="container-fluid">
-      <h6>The Outdoor Recreation Roundtable (ORR), with support from partners at Oregon State University's Outdoor Recreation Economy Initiative, is building a comprehensive list of Land and Water Conservation Fund-eligible recreation projects for funding through the Great
- American Outdoors Act. </h6>
+      <h5>The Outdoor Recreation Roundtable (ORR), with support from partners at Oregon State University's Outdoor Recreation Economy Initiative, is building a comprehensive list of Land and Water Conservation Fund-eligible recreation projects for funding through the Great
+ American Outdoors Act. </h5>
  <br>
-      <p>&emsp;&emsp;&emsp;The passage of the Great American Outdoors Act guarantees $900 million in mandatory annual funding for the Land and Water Conservation Fund, the most important tool for funding outdoor recreation in the United States. To help put these funds to work, ORR has sourced
- the following projects from outdoor recreation partners from around the country--including land management agencies, state departments of natural resources, outdoor businesses and community members. ORR hopes that these projects will engage more people in
- outdoor recreation, help create recreation economies, and grow the outdoor recreation industry for years to come. </p>
+ <p>&emsp;&emsp;&emsp;<strong>The passage of the Great American Outdoors Act </strong> guarantees $900 million in mandatory
+annual funding for the Land and Water Conservation Fund (LWCF), the most important
+tool for funding outdoor recreation in the United States. To help put these funds to work,
+the Outdoor Recreation Roundtable put out a call for LWCF-eligible recreation projects
+for FY22.
+<br><br>&emsp;&emsp;&emsp;From a list of 191 responses from outdoor recreation partners from around the
+country--including land management agencies, state departments of natural resources,
+outdoor businesses and community members—<b> <strong>this is our Top 11 </strong></b> ORR hopes that these
+projects will engage more people in outdoor recreation, help create recreation economies,
+and grow the outdoor recreation industry for years to come.</p>
       </br>
     </div>
+
       <div class="center">
-        <h3>  Top 10 Projects for Financial Year 2022 </h3>
+
+        <br>
+        <br>
+        <h2>  Top 11 Projects for Financial Year 2022 </h2>
+        <!-- <button type="button">
+        <a href="assets/LWCF_ORR.pdf" target="_blank" >
+          Click Me for Top 11 PDF
+        </a>
+        </button> -->
+        <p>Open the PDF in Seperate <a href="assets/LWCF_ORR.pdf">Window</a>.</p>
+
+        <br><br>
+        <iframe src="assets/LWCF_ORR.pdf" width="100%" height="700px"></iframe>
+
+
+          <br>  <br>
       </div>
-      <p>From the complete list, ORR has identified ten outstanding projects from across the country for FY22 funding. These projects showcase ORR's priorities for the outdoor industry in the years to come:</p>
-      <div class="row">
-        <div class="col">
-          <ul>
-            <li>increase recreation access for diverse user groups</li>
-            <li>promote rural economic development by adding value to nearby communities</li>
-          </ul>
-        </div>
-        <div class="col">
-          <ul>
-            <li>enhance opportunities for underrepresented groups (e.g. Black, Indigenous, and Persons of Color, Low-income, Disabled, Immigrants, etc.)</li>
-            <li> Spot Filler </li>
-          </ul>
-        </div>
-        <p>ORR looks forward to engaging with agency partners at the federal and state levels over the next year to ensure that these projects break ground in a timely, cost-effective manner. </p>
-      </div>
+            <center>
+
+      </center>
+
     </section>
 
     <section id="mapdata" class="mapdata-section">
@@ -116,6 +127,11 @@
           <input type="radio" name="states" value="set1">
           <label>
             FY 2022
+          </label>
+          &emsp;&emsp;&emsp;&emsp;
+          <input type="radio" name="states" value="set3">
+          <label>
+            FY 23 and Beyond
           </label>
           &emsp;&emsp;&emsp;&emsp;
           <input type="radio" name="states" value="set2">
@@ -285,8 +301,8 @@
           <center>
                   <h1> State by State Project Overview</h1>
                 </center>
-          <table>
-      </table>
+          <table1>
+      </table1>
         </section>
 
     <section id="about" class="about-section">
@@ -649,6 +665,17 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
     ]).then(function(datasets) {
 
 
+
+      var matrix = d3.nest()
+        .key(function(d) {return d.State;  })
+        .key(function(d) {return d.Q5_1;  })
+        .key(function(d) {return d.Q5_2;  })
+        .entries(datasets[0]);
+        var j;
+        var k;
+        console.log(matrix)
+
+
 // Makes State By State Table with Project Overview
 
       var matrix = d3.nest()
@@ -661,7 +688,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
         console.log(matrix)
         // Select the table element
 
-       var table =   d3.select("table").selectAll("ul")
+       var table1 =   d3.select("table1").selectAll("ul")
             .data(matrix)
           .enter().append("ul")
           .style("font-size", "24px")
@@ -672,21 +699,22 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
               .text(function(d) {
                     return d.key  })
                         .style("font-size", "16px")
-                      //   .data(function(d) { return d.values })
-                      // .enter().append("li1")
-                      //   .text(function(d) {
-                      //         return d.Q5_2; })
-                      //             .style("font-size", "16px")
-              table.selectAll('ul').select('li').classed('row-header', true);
+              table1.selectAll('ul').select('li').classed('row-header', true);
+
+
 
 // Subdata sets fy 2022 and all
       var df1 = datasets[0];
       var df2 = datasets[0].filter(function(d) {
         return d.Q35 == "FY 22";
       })
+      var df3 = datasets[0].filter(function(d) {
+        return d.Q35 == "FY 23 and Beyond";
+      })
 
       const dfs = [df1,
-        df2
+        df2,
+        df3
       ];
 
       // Radio Caller button
@@ -708,6 +736,9 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
           df = dfs[1];
         } else if (selection == 'set2') {
           df = dfs[0];
+        }
+        else if (selection == 'set3') {
+          df = dfs[2];
         } else {
           df = dfs[0];
         }
