@@ -1,6 +1,7 @@
 library(readr)
 ## The file name needs to be changed
-LandWCF <- read_csv("~/Downloads/LandWCF_November 8, 2020_22.07.csv")
+LandWCF <- read_csv("~/Downloads/LandWCF_November 19, 2020_14.10")
+LandWCF$Q6_1[LandWCF$Q1_2_TEXT=="City of Farmington"]<-"New Mexico"
 ## Remove Columns and Identifiable Rows
 test <- LandWCF[-c(1:2),] 
 test <- test[-c(1:17)] 
@@ -40,8 +41,21 @@ tester$Q9<-gsub("\\(please describe)", "", tester$Q9)
 tester$Q15<-gsub("\\(please describe)", "", tester$Q15)
 tester$Q9<-gsub("\\:", "", tester$Q9)
 tester$Q15<-gsub("\\:", "", tester$Q15)
-tester$Q15<-gsub("Campground \\+ Hospitality", "Campground/Hospitality", tester$Q15)tester$Q15<-gsub("Kayaking and Rafting", "Kayaking/Rafting", tester$Q15)
+tester$Q15<-gsub("Campground \\+ Hospitality", "Campground/Hospitality", tester$Q15)
 tester$Q15<-gsub("Kayaking and Rafting", "Kayaking/Rafting", tester$Q15)
+
+tester$Top11<-0
+tester$Top11[tester$Q5_1=="Palisade Wall Repair at Alpine Tunnel Historic District Gunnison" | 
+               tester$Q5_1=="Fishing Pier, Delaware City Branch Channel of the C&D Canal"|
+             tester$Q5_1=="Restore Rumney"|
+               tester$Q5_1=="All Abilities Park"|
+               tester$Q5_1=="Animas River Wave Features"|
+               tester$Q5_1=="Red Rock Canyon National Conservation Area Restoration"|
+               tester$Q5_1=="Crooked River"|
+               tester$Q5_1=="Indian Creek Climbing Conservation"|
+               tester$Q5_1=="Spokane County-- Make Beacon Hill Public"|
+               tester$Q5_1=="Port of Anacortes--Developing the Cap Sante Marina RV Park"|
+               tester$Q5_1=="New River Gorge National River Trail moderazation" ]<-1
 
 #Write CSV file
 write.csv(tester, file="lwcfsurvey.csv")

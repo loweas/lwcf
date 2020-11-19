@@ -226,6 +226,7 @@ and grow the outdoor recreation industry for years to come.</p>
         <div class="col-lg">
           <div class="center">
             <h3>Project Type </h3>
+              <br><br>
           </div>
           <p>What type of project is it? <p>
               <p>Projects can be considered a development, an aquisition, a combination of these two types or a project in its planning stage.
@@ -240,10 +241,11 @@ and grow the outdoor recreation industry for years to come.</p>
         <div class="col-lg">
           <div class="center">
             <h3>Categorization of the project</h3>
+              <br><br>
           </div>
           <p>Project cover a variety of categorizes. <p>
               <p>Hover over the pie sectors to see which catogories where reported by our respondents. </p>
-              
+
         </div>
         <div class="col-md">
           <div id="catchart"></div>
@@ -260,11 +262,11 @@ and grow the outdoor recreation industry for years to come.</p>
         <div class="col-lg">
           <div class="center">
             <h3>Recreation Types Supported</h3>
+              <br><br>
           </div>
-          <p>Most frequently mentioned type of recreation the project supports. </p>
-          <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-            kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-            eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+          <p>The list highlights the most frequently mentioned type of recreation the projects support.</p>
+          <p>Each respondent was allowed to check multiple recreation types their project supported.
+          <br> </p>
         </div>
       </div>
       <br>
@@ -277,10 +279,12 @@ and grow the outdoor recreation industry for years to come.</p>
         <div class="col-lg">
           <div class="center">
             <h3>Demographics </h3>
+              <br><br>
           </div>
-          <p class="lorem">Most commonly mentioned communities the project would serve..... <br><br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-            voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+          <p>The list highlights the most frequently mentioned demographic the projects support.</p>
+          <p>Each respondent was allowed to check as many potential demographic blocks the project was likely to surve.
+            <br><br>
+          <br> </p>
         </div>
         <div class="col-md">
           <div id="demochart"></div>
@@ -364,18 +368,39 @@ and grow the outdoor recreation industry for years to come.</p>
     plan = L.featureGroup.subGroup(masClusGroup);
     combo = L.featureGroup.subGroup(masClusGroup);
     aqu = L.featureGroup.subGroup(masClusGroup);
+    fy23 = L.featureGroup.subGroup(masClusGroup);
+    best = L.featureGroup.subGroup(masClusGroup);
+
+
+
 
 
 
     var url1 = "assets/lwcf/lwcf.geojson";
 
+
+    $.getJSON(url1, function(data) {
+                 geojsonlayer= L.geoJson(data, {
+                       filter: function(feature, layer) {
+                           return feature.properties.Q35 =="FY 23 and Beyond";
+                       }
+                 }).addTo(fy23);
+              });
+              $.getJSON(url1, function(data) {
+                           geojsonlayer= L.geoJson(data, {
+                                 filter: function(feature, layer) {
+                                     return feature.properties.Q41 =="Yes";
+                                 }
+                           }).addTo(best);
+                        });
+
+
+
     $.getJSON(url1, function(data) {
             geojsonlayer= L.geoJson(data, {
-              // filter: function(feature, layer) {
-              //     return feature.properties.Q35 !="FY 22";
-              // }
             }).addTo(all);
          });
+
     $.getJSON(url1, function(data) {
                  geojsonlayer= L.geoJson(data, {
                        filter: function(feature, layer) {
@@ -419,11 +444,14 @@ and grow the outdoor recreation industry for years to come.</p>
 
 var baselayer = {
   "All": all,
+  "Top 11": best,
   "FY 2022": fy,
+  "FY 2023 & Beyond": fy23,
   "Development": development,
   "Acquisition": aqu,
   "Combination (D&A)": combo,
   "Planning": plan,
+
 
 
 };
@@ -441,6 +469,72 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
 
 // This is for all points
     all.on('click', function(e) {
+      sidebar.toggle();
+
+      var pro = document.getElementById('pro');
+      pro.innerHTML = e.layer.feature.properties.Q5_1;
+
+      var fy22 = document.getElementById('fy22');
+      if (e.layer.feature.properties.Q35 == "FY 22") {
+        fy22.innerHTML = "Financal Year 2022"
+      } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+        fy22.innerHTML = "Financal Year 2023 & Beyond"
+      } else(fy22.innerHTML = "")
+
+      var name = document.getElementById('org');
+      if (e.layer.feature.properties.Q1_1 == "NA") {
+        name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
+      } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+
+      var des = document.getElementById('description');
+      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+
+      var cos = document.getElementById('cos');
+      cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+
+      var type = document.getElementById('type');
+      type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+
+      var rec = document.getElementById('rec');
+      if (e.layer.feature.properties.Q15_14_TEXT == null) {
+        rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+      } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
+    });
+    //finacial year 2023
+    fy23.on('click', function(e) {
+      sidebar.toggle();
+
+      var pro = document.getElementById('pro');
+      pro.innerHTML = e.layer.feature.properties.Q5_1;
+
+      var fy22 = document.getElementById('fy22');
+      if (e.layer.feature.properties.Q35 == "FY 22") {
+        fy22.innerHTML = "Financal Year 2022"
+      } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+        fy22.innerHTML = "Financal Year 2023 & Beyond"
+      } else(fy22.innerHTML = "")
+
+      var name = document.getElementById('org');
+      if (e.layer.feature.properties.Q1_1 == "NA") {
+        name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
+      } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+
+      var des = document.getElementById('description');
+      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+
+      var cos = document.getElementById('cos');
+      cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+
+      var type = document.getElementById('type');
+      type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+
+      var rec = document.getElementById('rec');
+      if (e.layer.feature.properties.Q15_14_TEXT == null) {
+        rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+      } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
+    });
+    // Top 11
+    best.on('click', function(e) {
       sidebar.toggle();
 
       var pro = document.getElementById('pro');
@@ -569,7 +663,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
                 rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
               } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
             });
-            // This is develpment
+            // This is combo
                 combo.on('click', function(e) {
                   sidebar.toggle();
                   var pro = document.getElementById('pro');
@@ -601,7 +695,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
                     rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
                   } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
                 });
-                // This is develpment
+                // This is plan
                     plan.on('click', function(e) {
                       sidebar.toggle();
                       var pro = document.getElementById('pro');
@@ -676,6 +770,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
         .key(function(d) {return d.Q5_1;  })
         .key(function(d) {return d.Q5_2;  })
         .entries(datasets[0]);
+
         var j;
         var k;
 
