@@ -2,6 +2,7 @@ library(readr)
 ## The file name needs to be changed
 LandWCF <- read_csv("~/Downloads/LandWCF_November 19, 2020_14.10")
 LandWCF$Q6_1[LandWCF$Q1_2_TEXT=="City of Farmington"]<-"New Mexico"
+LandWCF$Q6_2[LandWCF$Q1_2_TEXT=="City of Farmington"]<-"San Juan County"
 ## Remove Columns and Identifiable Rows
 test <- LandWCF[-c(1:2),] 
 test <- test[-c(1:17)] 
@@ -44,10 +45,10 @@ tester$Q15<-gsub("\\:", "", tester$Q15)
 tester$Q15<-gsub("Campground \\+ Hospitality", "Campground/Hospitality", tester$Q15)
 tester$Q15<-gsub("Kayaking and Rafting", "Kayaking/Rafting", tester$Q15)
 
-tester$Top11<-0
-tester$Top11[tester$Q5_1=="Palisade Wall Repair at Alpine Tunnel Historic District Gunnison" | 
+tester$Q41<-"No"
+tester$Q41[tester$Q5_1=="Palisade Wall Repair at Alpine Tunnel Historic District Gunnison NF"| 
                tester$Q5_1=="Fishing Pier, Delaware City Branch Channel of the C&D Canal"|
-             tester$Q5_1=="Restore Rumney"|
+               tester$Q5_1=="Restore Rumney"|
                tester$Q5_1=="All Abilities Park"|
                tester$Q5_1=="Animas River Wave Features"|
                tester$Q5_1=="Red Rock Canyon National Conservation Area Restoration"|
@@ -55,7 +56,7 @@ tester$Top11[tester$Q5_1=="Palisade Wall Repair at Alpine Tunnel Historic Distri
                tester$Q5_1=="Indian Creek Climbing Conservation"|
                tester$Q5_1=="Spokane County-- Make Beacon Hill Public"|
                tester$Q5_1=="Port of Anacortes--Developing the Cap Sante Marina RV Park"|
-               tester$Q5_1=="New River Gorge National River Trail moderazation" ]<-1
+               tester$Q5_1=="New River Gorge National River Trail moderazation" ]<-"Yes"
 
 #Write CSV file
 write.csv(tester, file="lwcfsurvey.csv")
@@ -64,26 +65,4 @@ write.csv(tester, file="lwcfsurvey.csv")
 library("geojsonio", lib.loc="/Library/Frameworks/R.framework/Versions/3.5/Resources/library")
 geojson_write(tester, file = "lwcf.geojson")
 
-
-library("tm")
-library("SnowballC")
-library("RColorBrewer")
-library("wordcloud")
-
-texts=tester$Q5_2
-docs <- Corpus(VectorSource(texts))
-
-docs <- docs %>%
-  tm_map(removeNumbers) %>%
-  tm_map(removePunctuation) %>%
-  tm_map(stripWhitespace)
-docs <- tm_map(docs, content_transformer(tolower))
-docs <- tm_map(docs, removeWords, stopwords("english"))
-dtm <- TermDocumentMatrix(docs) 
-matrix <- as.matrix(dtm) 
-words <- sort(rowSums(matrix),decreasing=TRUE) 
-df <- data.frame(word = names(words),freq=words)
-df<- df[-c(1),] 
-words <- df %>% count(word, sort=TRUE)set.seed(1234) # for reproducibility 
-wordcloud(words = df$word, freq = df$freq, min.freq = 1,           max.words=100, random.order=FALSE, rot.per=0.35, scale=c(3.5,0.25),         colors = c('#5c8e53', '#2a4c7e', '#8E535C', '#784a6f','#008072'))
 
