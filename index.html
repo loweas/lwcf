@@ -772,7 +772,7 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
 
       var matrix = d3.nest()
         .key(function(d) {return d.State;  })
-        .key(function(d) {return d.Q5_1;  })
+        .key(function(d) {return d.Q5_1;  }) .sortKeys(d3.ascending)
         .key(function(d) {return d.Q5_2;  })
         .entries(datasets[0]);
 
