@@ -139,6 +139,8 @@ and grow the outdoor recreation industry for years to come.</p>
           </label>
         </form> -->
 
+
+
         <br>
         <button type="button">
         <a href="assets/LWCF_Survey_Results.xlsx" download >
@@ -403,8 +405,6 @@ and grow the outdoor recreation industry for years to come.</p>
                            }).addTo(best);
                         });
 
-
-
     $.getJSON(url1, function(data) {
             geojsonlayer= L.geoJson(data, {
             }).addTo(all);
@@ -482,32 +482,34 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
       sidebar.toggle();
 
       var pro = document.getElementById('pro');
-      pro.innerHTML = e.layer.feature.properties.Q5_1;
+      pro.innerHTML = e.layer.feature.properties.Project;
 
       var fy22 = document.getElementById('fy22');
-      if (e.layer.feature.properties.Q35 == "FY 22") {
+      if (e.layer.feature.properties.FY == "FY22") {
         fy22.innerHTML = "Financal Year 2022"
-      } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+      } else if (e.layer.feature.properties.FY == "FY23 and Beyond") {
         fy22.innerHTML = "Financal Year 2023 & Beyond"
       } else(fy22.innerHTML = "")
 
       var name = document.getElementById('org');
-      if (e.layer.feature.properties.Q1_1 == "NA") {
-        name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
-      } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+      if (e.layer.feature.properties.Organization_Name == "NA") {
+        name.innerHTML = e.layer.feature.properties.ORR;
+      } else(name.innerHTML = e.layer.feature.properties.Organization_Name)
 
       var des = document.getElementById('description');
-      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Description;
 
       var cos = document.getElementById('cos');
-      cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+      if (e.layer.feature.properties.Estimate_Cost == null) {
+        cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Cost_Range;
+      } else(cos.innerHTML = "Estimated Cost : $" + e.layer.feature.properties.Estimate_Cost)
 
       var type = document.getElementById('type');
-      type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+      type.innerHTML = "Project Type : " + e.layer.feature.properties.type_rec;
 
       var rec = document.getElementById('rec');
       if (e.layer.feature.properties.Q15_14_TEXT == null) {
-        rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+        rec.innerHTML = "LWCF Program : " + e.layer.feature.properties.program;
       } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
     });
     // Top 11
@@ -515,195 +517,72 @@ var lcontrol =  L.control.layers(baselayer,overlayMaps,{collapsed:false,position
       sidebar.toggle();
 
       var pro = document.getElementById('pro');
-      pro.innerHTML = e.layer.feature.properties.Q5_1;
+      pro.innerHTML = e.layer.feature.properties.Project;
 
       var fy22 = document.getElementById('fy22');
-      if (e.layer.feature.properties.Q35 == "FY 22") {
+      if (e.layer.feature.properties.FY == "FY22") {
         fy22.innerHTML = "Financal Year 2022"
-      } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+      } else if (e.layer.feature.properties.FY == "FY23 and Beyond") {
         fy22.innerHTML = "Financal Year 2023 & Beyond"
       } else(fy22.innerHTML = "")
 
       var name = document.getElementById('org');
-      if (e.layer.feature.properties.Q1_1 == "NA") {
-        name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
-      } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+      if (e.layer.feature.properties.Organization_Name == "NA") {
+        name.innerHTML = e.layer.feature.properties.ORR;
+      } else(name.innerHTML = e.layer.feature.properties.Organization_Name)
 
       var des = document.getElementById('description');
-      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Description;
 
       var cos = document.getElementById('cos');
-      cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+      if (e.layer.feature.properties.Estimate_Cost == null) {
+        cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Cost_Range;
+      } else(cos.innerHTML = "Estimated Cost : $" + e.layer.feature.properties.Estimate_Cost)
 
       var type = document.getElementById('type');
-      type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+      type.innerHTML = "Project Type : " + e.layer.feature.properties.type_rec;
 
       var rec = document.getElementById('rec');
       if (e.layer.feature.properties.Q15_14_TEXT == null) {
-        rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+        rec.innerHTML = "LWCF Program : " + e.layer.feature.properties.program;
       } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
     });
 
 // This is for FY 2022
     fy.on('click', function(e) {
       sidebar.toggle();
+
       var pro = document.getElementById('pro');
-      pro.innerHTML = e.layer.feature.properties.Q5_1;
+      pro.innerHTML = e.layer.feature.properties.Project;
 
       var fy22 = document.getElementById('fy22');
-      if (e.layer.feature.properties.Q35 == "FY 22") {
+      if (e.layer.feature.properties.FY == "FY22") {
         fy22.innerHTML = "Financal Year 2022"
-      } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
+      } else if (e.layer.feature.properties.FY == "FY23 and Beyond") {
         fy22.innerHTML = "Financal Year 2023 & Beyond"
       } else(fy22.innerHTML = "")
 
       var name = document.getElementById('org');
-      if (e.layer.feature.properties.Q1_1 == "NA") {
-        name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
-      } else(name.innerHTML = e.layer.feature.properties.Q1_1)
+      if (e.layer.feature.properties.Organization_Name == "NA") {
+        name.innerHTML = e.layer.feature.properties.ORR;
+      } else(name.innerHTML = e.layer.feature.properties.Organization_Name)
 
       var des = document.getElementById('description');
-      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
+      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Description;
 
       var cos = document.getElementById('cos');
-      cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
+      if (e.layer.feature.properties.Estimate_Cost == null) {
+        cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Cost_Range;
+      } else(cos.innerHTML = "Estimated Cost : $" + e.layer.feature.properties.Estimate_Cost)
 
       var type = document.getElementById('type');
-      type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
+      type.innerHTML = "Project Type : " + e.layer.feature.properties.type_rec;
 
       var rec = document.getElementById('rec');
       if (e.layer.feature.properties.Q15_14_TEXT == null) {
-        rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
+        rec.innerHTML = "LWCF Program : " + e.layer.feature.properties.program;
       } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
     });
-    // This is develpment
-        development.on('click', function(e) {
-          sidebar.toggle();
-          var pro = document.getElementById('pro');
-          pro.innerHTML = e.layer.feature.properties.Q5_1;
-
-          var fy22 = document.getElementById('fy22');
-          if (e.layer.feature.properties.Q35 == "FY 22") {
-            fy22.innerHTML = "Financal Year 2022"
-          } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
-            fy22.innerHTML = "Financal Year 2023 & Beyond"
-          } else(fy22.innerHTML = "")
-
-          var name = document.getElementById('org');
-          if (e.layer.feature.properties.Q1_1 == "NA") {
-            name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
-          } else(name.innerHTML = e.layer.feature.properties.Q1_1)
-
-          var des = document.getElementById('description');
-          des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
-
-          var cos = document.getElementById('cos');
-          cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
-
-          var type = document.getElementById('type');
-          type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
-
-          var rec = document.getElementById('rec');
-          if (e.layer.feature.properties.Q15_14_TEXT == null) {
-            rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
-          } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
-        });
-        // This is develpment
-            aqu.on('click', function(e) {
-              sidebar.toggle();
-              var pro = document.getElementById('pro');
-              pro.innerHTML = e.layer.feature.properties.Q5_1;
-
-              var fy22 = document.getElementById('fy22');
-              if (e.layer.feature.properties.Q35 == "FY 22") {
-                fy22.innerHTML = "Financal Year 2022"
-              } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
-                fy22.innerHTML = "Financal Year 2023 & Beyond"
-              } else(fy22.innerHTML = "")
-
-              var name = document.getElementById('org');
-              if (e.layer.feature.properties.Q1_1 == "NA") {
-                name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
-              } else(name.innerHTML = e.layer.feature.properties.Q1_1)
-
-              var des = document.getElementById('description');
-              des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
-
-              var cos = document.getElementById('cos');
-              cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
-
-              var type = document.getElementById('type');
-              type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
-
-              var rec = document.getElementById('rec');
-              if (e.layer.feature.properties.Q15_14_TEXT == null) {
-                rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
-              } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
-            });
-            // This is combo
-                combo.on('click', function(e) {
-                  sidebar.toggle();
-                  var pro = document.getElementById('pro');
-                  pro.innerHTML = e.layer.feature.properties.Q5_1;
-
-                  var fy22 = document.getElementById('fy22');
-                  if (e.layer.feature.properties.Q35 == "FY 22") {
-                    fy22.innerHTML = "Financal Year 2022"
-                  } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
-                    fy22.innerHTML = "Financal Year 2023 & Beyond"
-                  } else(fy22.innerHTML = "")
-
-                  var name = document.getElementById('org');
-                  if (e.layer.feature.properties.Q1_1 == "NA") {
-                    name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
-                  } else(name.innerHTML = e.layer.feature.properties.Q1_1)
-
-                  var des = document.getElementById('description');
-                  des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
-
-                  var cos = document.getElementById('cos');
-                  cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
-
-                  var type = document.getElementById('type');
-                  type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
-
-                  var rec = document.getElementById('rec');
-                  if (e.layer.feature.properties.Q15_14_TEXT == null) {
-                    rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
-                  } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
-                });
-                // This is plan
-                    plan.on('click', function(e) {
-                      sidebar.toggle();
-                      var pro = document.getElementById('pro');
-                      pro.innerHTML = e.layer.feature.properties.Q5_1;
-
-                      var fy22 = document.getElementById('fy22');
-                      if (e.layer.feature.properties.Q35 == "FY 22") {
-                        fy22.innerHTML = "Financal Year 2022"
-                      } else if (e.layer.feature.properties.Q35 == "FY 23 and Beyond") {
-                        fy22.innerHTML = "Financal Year 2023 & Beyond"
-                      } else(fy22.innerHTML = "")
-
-                      var name = document.getElementById('org');
-                      if (e.layer.feature.properties.Q1_1 == "NA") {
-                        name.innerHTML = e.layer.feature.properties.Q1_2_TEXT;
-                      } else(name.innerHTML = e.layer.feature.properties.Q1_1)
-
-                      var des = document.getElementById('description');
-                      des.innerHTML = "Project Description : <br> " + e.layer.feature.properties.Q5_2;
-
-                      var cos = document.getElementById('cos');
-                      cos.innerHTML = "Estimated Cost : " + e.layer.feature.properties.Q13;
-
-                      var type = document.getElementById('type');
-                      type.innerHTML = "Project Type : " + e.layer.feature.properties.Q31;
-
-                      var rec = document.getElementById('rec');
-                      if (e.layer.feature.properties.Q15_14_TEXT == null) {
-                        rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15;
-                      } else(rec.innerHTML = "Targeted Recreation : " + e.layer.feature.properties.Q15 + "" + e.layer.feature.properties.Q15_14_TEXT)
-                    });
 
 
 
