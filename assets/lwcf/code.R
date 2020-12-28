@@ -14,6 +14,7 @@ test= test %>%
     State = Q6_1,
     County = Q6_2
   )
+map$program<-map$`Program?`
 
 library(readr)
 ##  Merge on State/County
@@ -21,7 +22,7 @@ centroidsUS <- read_csv("~/workspace/lwcf/assets/centroidsUS.csv")
 tester<-merge(centroidsUS, test, by.x=c('State','County'), all=FALSE)
 
 ##Finding those thatt didn't fill in County
-t<-test[- grep("", test$County),]
+t<-map[- grep("", map$County),]
 tester1<-merge(centroidstates, t, by.x='State', all=FALSE)
 tester1$StateAp<-NULL
 
@@ -45,18 +46,21 @@ tester$Q15<-gsub("\\:", "", tester$Q15)
 tester$Q15<-gsub("Campground \\+ Hospitality", "Campground/Hospitality", tester$Q15)
 tester$Q15<-gsub("Kayaking and Rafting", "Kayaking/Rafting", tester$Q15)
 
-tester$Q41<-"No"
-tester$Q41[tester$Q5_1=="Palisade Wall Repair at Alpine Tunnel Historic District Gunnison NF"| 
-               tester$Q5_1=="Fishing Pier, Delaware City Branch Channel of the C&D Canal"|
-               tester$Q5_1=="Restore Rumney"|
-               tester$Q5_1=="All Abilities Park"|
-               tester$Q5_1=="Animas River Wave Features"|
-               tester$Q5_1=="Red Rock Canyon National Conservation Area Restoration"|
-               tester$Q5_1=="Crooked River"|
-               tester$Q5_1=="Indian Creek Climbing Conservation"|
-               tester$Q5_1=="Spokane County-- Make Beacon Hill Public"|
-               tester$Q5_1=="Port of Anacortes--Developing the Cap Sante Marina RV Park"|
-               tester$Q5_1=="New River Gorge National River Trail moderazation" ]<-"Yes"
+tester$best<-"No"
+tester$best[tester$Project=="Homestead"| 
+               tester$Project=="Fishing Pier, Delaware City Branch Channel of the C&D Canal"|
+               tester$Project=="Rebuild ATV/Snowmobile Trail from Dollar Bay to Lake Linden"|
+               tester$Project=="All Abilities Park"|
+               tester$Project=="Port of Anacortes--Developing the Cap Sante Marina RV Park"|
+               tester$Project=="Bluewater Creek ACEC"|
+               tester$Project=="Eastview/Westview Park Improvements"|
+               tester$Project=="Junction City Fishing Access Improvement"|
+               tester$Project=="Yellowjacket Reservoir Access Enhancement"|
+               tester$Project=="North Delaware River Greenway"|
+               tester$Project=="Chelan-Renovating Lakeside Park" ]<-"Yes"
+
+
+
 
 #Write CSV file
 write.csv(tester, file="lwcfsurvey.csv")
